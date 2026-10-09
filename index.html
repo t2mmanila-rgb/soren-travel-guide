@@ -75,6 +75,7 @@
         
         <div class="flex items-center space-x-2 sm:space-x-4">
           <button onclick="scrollToSection('islands')" class="text-sm font-medium text-slate-600 hover:text-teal-600 px-3 py-2 rounded-lg transition">The 4 Islands</button>
+          <button onclick="scrollToSection('flights')" class="text-sm font-medium text-slate-600 hover:text-teal-600 px-3 py-2 rounded-lg transition">Flights</button>
           <button onclick="scrollToSection('comparison')" class="text-sm font-medium text-slate-600 hover:text-teal-600 px-3 py-2 rounded-lg transition">Compare</button>
           <button onclick="scrollToSection('matchmaker')" class="hidden md:flex text-sm font-medium bg-slate-100 hover:bg-slate-200 text-slate-700 px-3 py-1.5 rounded-lg transition items-center space-x-1.5">
             <i data-lucide="sparkles" class="w-4 h-4 text-teal-600"></i>
@@ -298,6 +299,40 @@
     <div id="islandContent" class="transition-all duration-300">
       <!-- Dynamic Javascript Content Injected Here -->
     </div>
+
+    <!-- Dedicated Flight Recommendations & Carrier Booking Section -->
+    <section id="flights" class="mt-20 scroll-mt-24">
+      <div class="text-center max-w-3xl mx-auto mb-8">
+        <div class="inline-flex items-center space-x-2 px-3.5 py-1.5 rounded-full bg-teal-50 border border-teal-200 text-teal-800 text-xs font-semibold mb-3">
+          <i data-lucide="plane-takeoff" class="w-4 h-4 text-teal-600"></i>
+          <span>Flight Logistics & Carrier Booking</span>
+        </div>
+        <h2 class="text-2xl sm:text-3xl font-bold text-slate-900 font-serif">Flight Recommendations & Fares</h2>
+        <p class="text-sm sm:text-base text-slate-600 mt-2">
+          Estimated round-trip airfares (PHP, USD, DKK) and direct official airline booking links for all destinations:
+        </p>
+
+        <!-- Quick Switcher Tabs for Flights -->
+        <div class="flex items-center justify-center flex-wrap gap-2 mt-6">
+          <button onclick="selectFlightsTab('panglao')" class="flight-tab-btn px-3.5 py-1.5 rounded-xl text-xs font-bold transition border border-teal-600 bg-teal-600 text-white shadow-xs" data-flight-id="panglao">
+            🐢 Panglao (TAG)
+          </button>
+          <button onclick="selectFlightsTab('boracay')" class="flight-tab-btn px-3.5 py-1.5 rounded-xl text-xs font-bold transition border border-slate-200 bg-white text-slate-700 hover:border-teal-500 shadow-xs" data-flight-id="boracay">
+            🏖️ Boracay (MPH)
+          </button>
+          <button onclick="selectFlightsTab('siargao')" class="flight-tab-btn px-3.5 py-1.5 rounded-xl text-xs font-bold transition border border-slate-200 bg-white text-slate-700 hover:border-teal-500 shadow-xs" data-flight-id="siargao">
+            🌴 Siargao (IAO)
+          </button>
+          <button onclick="selectFlightsTab('camiguin')" class="flight-tab-btn px-3.5 py-1.5 rounded-xl text-xs font-bold transition border border-slate-200 bg-white text-slate-700 hover:border-teal-500 shadow-xs" data-flight-id="camiguin">
+            🌋 Camiguin (CGM)
+          </button>
+        </div>
+      </div>
+
+      <div id="flightCardContainer">
+        <!-- Injected via JavaScript -->
+      </div>
+    </section>
 
     <section id="comparison" class="mt-20 scroll-mt-24">
       <div class="text-center max-w-3xl mx-auto mb-10">
@@ -1099,79 +1134,6 @@
           <!-- Island Details Body -->
           <div class="p-6 sm:p-10 space-y-10">
 
-            <!-- Flight Routes, Fares & Official Carrier Booking Sites -->
-            <div class="rounded-2xl bg-gradient-to-br from-slate-900 via-slate-800 to-teal-950 text-white p-6 sm:p-8 shadow-xl border border-teal-500/20">
-              <div class="flex flex-col md:flex-row md:items-center justify-between pb-6 border-b border-white/10 gap-4">
-                <div>
-                  <div class="inline-flex items-center space-x-2 px-3 py-1 rounded-full bg-teal-500/20 text-teal-300 text-xs font-semibold mb-2">
-                    <i data-lucide="plane-takeoff" class="w-3.5 h-3.5"></i>
-                    <span>Flight Logistics & Fares</span>
-                  </div>
-                  <h4 class="text-xl sm:text-2xl font-bold font-serif text-white flex items-center gap-2">
-                    Flights to ${data.name.split(' (')[0]}
-                  </h4>
-                  <p class="text-xs sm:text-sm text-slate-300 mt-1">${data.flights.routeSummary} • <span class="text-teal-300 font-medium">${data.flights.duration}</span></p>
-                </div>
-
-                <!-- Estimated Fare Box -->
-                <div class="bg-white/10 backdrop-blur-md rounded-xl p-4 border border-white/10 text-left sm:text-right shrink-0">
-                  <span class="text-[11px] uppercase tracking-wider text-teal-300 font-bold block">Estimated Round-Trip Fare</span>
-                  <div class="text-xl sm:text-2xl font-extrabold font-mono text-white mt-0.5">
-                    ${data.flights.priceRange.php}
-                  </div>
-                  <div class="text-xs text-slate-300 mt-0.5 font-medium">
-                    ${data.flights.priceRange.usd} • <span class="text-amber-300">${data.flights.priceRange.dkk}</span>
-                    <span class="text-[11px] text-slate-400 block sm:inline">(${data.flights.priceRange.period})</span>
-                  </div>
-                </div>
-              </div>
-
-              <!-- Note on Fares -->
-              <p class="text-xs text-slate-300 mt-4 leading-relaxed">
-                💡 ${data.flights.priceRange.note}
-              </p>
-
-              <!-- Official Carrier Booking Sites -->
-              <div class="mt-6">
-                <div class="flex items-center justify-between mb-3">
-                  <h5 class="text-xs sm:text-sm font-bold uppercase tracking-wider text-slate-300 flex items-center gap-1.5">
-                    <i data-lucide="external-link" class="w-4 h-4 text-teal-400"></i>
-                    Official Airline Booking Sites
-                  </h5>
-                  <span class="text-[11px] text-teal-300 hidden sm:inline">Direct carrier booking links</span>
-                </div>
-
-                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3">
-                  ${data.flights.carriers.map(c => `
-                    <a 
-                      href="${c.url}" 
-                      target="_blank" 
-                      rel="noopener noreferrer" 
-                      class="group p-4 rounded-xl bg-white/5 hover:bg-white/15 border border-white/10 hover:border-teal-400/50 transition duration-200 flex flex-col justify-between"
-                    >
-                      <div>
-                        <div class="flex items-center justify-between mb-2">
-                          <span class="font-bold text-white text-sm group-hover:text-teal-300 transition">${c.name}</span>
-                          <span class="text-[10px] font-semibold px-2 py-0.5 rounded-full bg-teal-500/20 text-teal-300 border border-teal-500/30">${c.badge}</span>
-                        </div>
-                        <p class="text-xs text-slate-300 leading-snug">${c.desc}</p>
-                      </div>
-                      <div class="mt-4 pt-2.5 border-t border-white/10 flex items-center justify-between text-xs font-semibold text-teal-300 group-hover:text-teal-200">
-                        <span>Book on ${c.short}</span>
-                        <i data-lucide="arrow-up-right" class="w-3.5 h-3.5 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition"></i>
-                      </div>
-                    </a>
-                  `).join('')}
-                </div>
-              </div>
-
-              <!-- Family Flight Pro-Tip -->
-              <div class="mt-5 p-3.5 rounded-xl bg-teal-950/60 border border-teal-600/30 text-xs text-slate-200 flex items-start gap-2.5">
-                <i data-lucide="info" class="w-4 h-4 text-teal-400 shrink-0 mt-0.5"></i>
-                <span><strong class="text-teal-300">Family Booking Tip:</strong> ${data.flights.tips}</span>
-              </div>
-            </div>
-
             <!-- Beaches & Child Safety -->
             <div>
               <div class="flex items-center space-x-2 text-teal-700 mb-4">
@@ -1317,6 +1279,106 @@
       lucide.createIcons();
     }
 
+    let currentFlightIsland = 'panglao';
+
+    function renderFlights(islandKey) {
+      const data = islandData[islandKey];
+      if (!data || !data.flights) return;
+      currentFlightIsland = islandKey;
+
+      const container = document.getElementById('flightCardContainer');
+      if (!container) return;
+
+      container.innerHTML = `
+        <div class="rounded-3xl bg-gradient-to-br from-slate-900 via-slate-800 to-teal-950 text-white p-6 sm:p-10 shadow-xl border border-teal-500/20">
+          <div class="flex flex-col md:flex-row md:items-center justify-between pb-6 border-b border-white/10 gap-4">
+            <div>
+              <div class="inline-flex items-center space-x-2 px-3 py-1 rounded-full bg-teal-500/20 text-teal-300 text-xs font-semibold mb-2">
+                <i data-lucide="plane-takeoff" class="w-3.5 h-3.5"></i>
+                <span>${data.flights.airportName}</span>
+              </div>
+              <h4 class="text-2xl sm:text-3xl font-bold font-serif text-white flex items-center gap-2">
+                Flights to ${data.name.split(' (')[0]}
+              </h4>
+              <p class="text-xs sm:text-sm text-slate-300 mt-1">${data.flights.routeSummary} • <span class="text-teal-300 font-medium">${data.flights.duration}</span></p>
+            </div>
+
+            <!-- Estimated Fare Box -->
+            <div class="bg-white/10 backdrop-blur-md rounded-2xl p-5 border border-white/10 text-left sm:text-right shrink-0">
+              <span class="text-[11px] uppercase tracking-wider text-teal-300 font-bold block">Estimated Round-Trip Fare</span>
+              <div class="text-2xl sm:text-3xl font-extrabold font-mono text-white mt-0.5">
+                ${data.flights.priceRange.php}
+              </div>
+              <div class="text-xs sm:text-sm text-slate-300 mt-0.5 font-medium">
+                ${data.flights.priceRange.usd} • <span class="text-amber-300 font-bold">${data.flights.priceRange.dkk}</span>
+                <span class="text-xs text-slate-400 block sm:inline">(${data.flights.priceRange.period})</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Note on Fares -->
+          <p class="text-xs sm:text-sm text-slate-300 mt-4 leading-relaxed">
+            💡 ${data.flights.priceRange.note}
+          </p>
+
+          <!-- Official Carrier Booking Sites -->
+          <div class="mt-8">
+            <div class="flex items-center justify-between mb-4">
+              <h5 class="text-xs sm:text-sm font-bold uppercase tracking-wider text-slate-300 flex items-center gap-1.5">
+                <i data-lucide="external-link" class="w-4 h-4 text-teal-400"></i>
+                Official Airline Booking Sites
+              </h5>
+              <span class="text-xs text-teal-300 hidden sm:inline">Direct carrier booking links</span>
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+              ${data.flights.carriers.map(c => `
+                <a 
+                  href="${c.url}" 
+                  target="_blank" 
+                  rel="noopener noreferrer" 
+                  class="group p-5 rounded-2xl bg-white/5 hover:bg-white/15 border border-white/10 hover:border-teal-400/50 transition duration-200 flex flex-col justify-between"
+                >
+                  <div>
+                    <div class="flex items-center justify-between mb-2">
+                      <span class="font-bold text-white text-base group-hover:text-teal-300 transition">${c.name}</span>
+                      <span class="text-[10px] font-semibold px-2 py-0.5 rounded-full bg-teal-500/20 text-teal-300 border border-teal-500/30">${c.badge}</span>
+                    </div>
+                    <p class="text-xs text-slate-300 leading-snug">${c.desc}</p>
+                  </div>
+                  <div class="mt-5 pt-3 border-t border-white/10 flex items-center justify-between text-xs font-semibold text-teal-300 group-hover:text-teal-200">
+                    <span>Book on ${c.short}</span>
+                    <i data-lucide="arrow-up-right" class="w-4 h-4 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition"></i>
+                  </div>
+                </a>
+              `).join('')}
+            </div>
+          </div>
+
+          <!-- Family Flight Pro-Tip -->
+          <div class="mt-6 p-4 rounded-2xl bg-teal-950/60 border border-teal-600/30 text-xs sm:text-sm text-slate-200 flex items-start gap-3">
+            <i data-lucide="info" class="w-5 h-5 text-teal-400 shrink-0 mt-0.5"></i>
+            <span><strong class="text-teal-300">Family Booking Tip:</strong> ${data.flights.tips}</span>
+          </div>
+        </div>
+      `;
+
+      // Update flight tab buttons
+      document.querySelectorAll('.flight-tab-btn').forEach(btn => {
+        if (btn.getAttribute('data-flight-id') === islandKey) {
+          btn.className = "flight-tab-btn px-3.5 py-1.5 rounded-xl text-xs font-bold transition border border-teal-600 bg-teal-600 text-white shadow-xs";
+        } else {
+          btn.className = "flight-tab-btn px-3.5 py-1.5 rounded-xl text-xs font-bold transition border border-slate-200 bg-white text-slate-700 hover:border-teal-500 shadow-xs";
+        }
+      });
+
+      lucide.createIcons();
+    }
+
+    function selectFlightsTab(id) {
+      renderFlights(id);
+    }
+
     function selectIsland(id) {
       document.querySelectorAll('.island-tab-btn').forEach(btn => {
         if (btn.getAttribute('data-id') === id) {
@@ -1327,6 +1389,7 @@
       });
 
       renderIsland(id);
+      renderFlights(id);
     }
 
     function showMatch(islandKey) {
@@ -1543,6 +1606,7 @@
     // Initialize on load
     window.onload = function() {
       renderIsland('panglao');
+      renderFlights('panglao');
       lucide.createIcons();
     };
   </script>
