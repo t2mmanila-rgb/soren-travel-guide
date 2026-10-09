@@ -155,15 +155,59 @@
     <span id="toastMessage">Link copied to clipboard!</span>
   </div>
 
-  <!-- Image Lightbox Modal -->
-  <div id="imageLightbox" onclick="closeLightbox()" class="fixed inset-0 z-50 bg-slate-950/90 backdrop-blur-md flex flex-col items-center justify-center p-4 hidden">
-    <button onclick="closeLightbox()" class="absolute top-4 right-4 sm:top-6 sm:right-6 text-white/80 hover:text-white p-2.5 rounded-full bg-white/10 hover:bg-white/20 transition cursor-pointer">
+  <!-- Image Lightbox Modal with Destination Gallery Carousel -->
+  <div id="imageLightbox" onclick="closeLightbox()" class="fixed inset-0 z-50 bg-slate-950/95 backdrop-blur-md flex items-center justify-center p-2 sm:p-6 hidden select-none">
+    
+    <!-- Top Destination & Counter Bar -->
+    <div class="absolute top-4 left-4 z-30 flex items-center space-x-2 text-white/90 text-xs sm:text-sm font-medium bg-slate-900/85 px-4 py-2 rounded-full backdrop-blur-md border border-white/15 shadow-lg">
+      <i data-lucide="map-pin" class="w-4 h-4 text-teal-400"></i>
+      <span id="lightboxIslandName" class="font-bold">Destination</span>
+      <span class="text-white/40">•</span>
+      <span id="lightboxCounter" class="font-mono text-teal-300 font-bold">1 / 6</span>
+    </div>
+
+    <!-- Close Button -->
+    <button onclick="closeLightbox()" title="Close (Esc)" class="absolute top-4 right-4 z-30 text-white/80 hover:text-white p-2.5 rounded-full bg-slate-900/80 hover:bg-slate-800 transition cursor-pointer backdrop-blur-md border border-white/15 shadow-lg">
       <i data-lucide="x" class="w-6 h-6"></i>
     </button>
-    <div class="max-w-5xl max-h-[90vh] flex flex-col items-center p-2" onclick="event.stopPropagation()">
-      <img id="lightboxImg" src="" alt="" class="max-h-[75vh] w-auto max-w-full rounded-2xl shadow-2xl object-contain border border-white/10" />
-      <p id="lightboxCaption" class="mt-4 text-white text-xs sm:text-sm font-medium text-center bg-slate-900/80 px-4 py-2 rounded-xl backdrop-blur-md border border-white/10 max-w-2xl"></p>
+
+    <!-- Prev Arrow Button -->
+    <button 
+      id="lightboxPrevBtn" 
+      onclick="prevLightbox(event)" 
+      title="Previous photo (Left arrow key)" 
+      class="absolute left-2 sm:left-6 z-30 text-white/90 hover:text-white p-3 sm:p-4 rounded-full bg-slate-900/80 hover:bg-teal-600 active:scale-95 transition cursor-pointer backdrop-blur-md border border-white/20 hover:border-teal-400 shadow-2xl group"
+    >
+      <i data-lucide="chevron-left" class="w-6 h-6 sm:w-8 sm:h-8 group-hover:-translate-x-0.5 transition"></i>
+    </button>
+
+    <!-- Main Image & Caption Container -->
+    <div class="relative max-w-5xl max-h-[92vh] flex flex-col items-center p-2 sm:p-4" onclick="event.stopPropagation()">
+      <div class="relative flex items-center justify-center overflow-hidden rounded-2xl shadow-2xl border border-white/15 bg-black/40">
+        <img 
+          id="lightboxImg" 
+          src="" 
+          alt="" 
+          class="max-h-[70vh] sm:max-h-[76vh] w-auto max-w-full object-contain transition-opacity duration-200" 
+        />
+      </div>
+      <div class="mt-3.5 flex flex-col items-center max-w-2xl text-center px-2">
+        <p id="lightboxCaption" class="text-white text-xs sm:text-sm font-medium bg-slate-900/90 px-4 py-2 rounded-xl backdrop-blur-md border border-white/15 shadow-lg"></p>
+        <div class="flex items-center space-x-2 text-white/40 text-[11px] mt-2">
+          <span>Use <kbd class="px-1.5 py-0.5 rounded bg-white/10 text-white/70 font-mono">←</kbd> and <kbd class="px-1.5 py-0.5 rounded bg-white/10 text-white/70 font-mono">→</kbd> keys or arrows to browse destination photos</span>
+        </div>
+      </div>
     </div>
+
+    <!-- Next Arrow Button -->
+    <button 
+      id="lightboxNextBtn" 
+      onclick="nextLightbox(event)" 
+      title="Next photo (Right arrow key)" 
+      class="absolute right-2 sm:right-6 z-30 text-white/90 hover:text-white p-3 sm:p-4 rounded-full bg-slate-900/80 hover:bg-teal-600 active:scale-95 transition cursor-pointer backdrop-blur-md border border-white/20 hover:border-teal-400 shadow-2xl group"
+    >
+      <i data-lucide="chevron-right" class="w-6 h-6 sm:w-8 sm:h-8 group-hover:translate-x-0.5 transition"></i>
+    </button>
   </div>
 
   <header class="relative bg-slate-900 py-16 sm:py-24 overflow-hidden">
@@ -304,12 +348,41 @@
             </tr>
             <tr>
               <td class="p-4 sm:p-5 font-semibold text-slate-900 flex items-center gap-1.5">
-                <i data-lucide="utensils-crossed" class="w-4 h-4 text-teal-600"></i> Dining & Strollers
+                <i data-lucide="utensils-crossed" class="w-4 h-4 text-teal-600"></i> Dining & Walkability
               </td>
               <td class="p-4 sm:p-5 text-slate-700 bg-teal-50/20">Alona strip is packed with pizzerias, Italian, and Filipino grills. Easy trikes.</td>
               <td class="p-4 sm:p-5 text-slate-700 bg-amber-50/20"><strong class="text-amber-700">Best in the Philippines.</strong> 4km car-free beach walk with hundreds of cafes.</td>
               <td class="p-4 sm:p-5 text-slate-700 bg-emerald-50/20">Amazing trendy sourdough bakeries, smoothie bowls, wood-fired pizza in General Luna.</td>
               <td class="p-4 sm:p-5 text-slate-700 bg-sky-50/20">Quaint, quiet home-style bistros, Italian dining (Luna Ristorante), and beach shacks.</td>
+            </tr>
+            <tr>
+              <td class="p-4 sm:p-5 font-semibold text-slate-900 flex items-center gap-1.5">
+                <i data-lucide="plane" class="w-4 h-4 text-teal-600"></i> Flights & Approx. Fares
+              </td>
+              <td class="p-4 sm:p-5 text-slate-700 bg-teal-50/20">
+                <div class="font-bold text-slate-900 text-sm">₱3,500 – ₱7,000</div>
+                <div class="text-[11px] text-slate-500">~$60–$125 USD • 420–870 DKK (RT)</div>
+                <div class="text-xs text-teal-700 font-semibold mt-1">PAL, Cebu Pacific, AirAsia</div>
+                <div class="text-[11px] text-slate-500">Direct jet into TAG (1h 15m)</div>
+              </td>
+              <td class="p-4 sm:p-5 text-slate-700 bg-amber-50/20">
+                <div class="font-bold text-slate-900 text-sm">₱3,200 – ₱6,800</div>
+                <div class="text-[11px] text-slate-500">~$55–$120 USD • 390–840 DKK (RT)</div>
+                <div class="text-xs text-amber-700 font-semibold mt-1">PAL, Cebu Pacific, AirAsia, Sunlight</div>
+                <div class="text-[11px] text-slate-500">Direct jet into MPH (1h 05m)</div>
+              </td>
+              <td class="p-4 sm:p-5 text-slate-700 bg-emerald-50/20">
+                <div class="font-bold text-slate-900 text-sm">₱6,500 – ₱12,000</div>
+                <div class="text-[11px] text-slate-500">~$115–$210 USD • 800–1,480 DKK (RT)</div>
+                <div class="text-xs text-emerald-700 font-semibold mt-1">PAL, Cebu Pacific, Sunlight</div>
+                <div class="text-[11px] text-slate-500">Direct IAO (2h 15m) or via CEB</div>
+              </td>
+              <td class="p-4 sm:p-5 text-slate-700 bg-sky-50/20">
+                <div class="font-bold text-slate-900 text-sm">₱4,500 – ₱8,500</div>
+                <div class="text-[11px] text-slate-500">~$80–$150 USD • 550–1,050 DKK (RT total)</div>
+                <div class="text-xs text-sky-700 font-semibold mt-1">PAL, Cebgo, OceanJet Ferry</div>
+                <div class="text-[11px] text-slate-500">Via Cebu (50m) or Bohol + ferry</div>
+              </td>
             </tr>
             <tr>
               <td class="p-4 sm:p-5 font-semibold text-slate-900 flex items-center gap-1.5">
@@ -437,10 +510,48 @@
         badge: "Top Recommendation for Families",
         badgeColor: "bg-teal-100 text-teal-800 border-teal-300",
         heroImage: "images/panglao/hero.jpg",
+        googleMapsUrl: "https://maps.google.com/?q=Panglao+Island,+Bohol,+Philippines",
         airport: "Bohol-Panglao International Airport (TAG)",
         transferTime: "10 to 15 minutes by air-conditioned van or taxi",
         boatTripDuration: "25 to 40 minutes (Balicasag Island & Virgin Island Sandbar)",
         gettingAround: "Short tricycle trips ($1.50) or comfortable private air-conditioned van hire ($45/day).",
+        flights: {
+          airportCode: "TAG",
+          airportName: "Bohol-Panglao International Airport (TAG)",
+          routeSummary: "Direct non-stop flights from Manila (MNL) & Cebu (CEB)",
+          duration: "~1 hr 15 mins non-stop from Manila",
+          priceRange: {
+            php: "₱3,500 – ₱7,000",
+            usd: "~$60 – $125 USD",
+            dkk: "~420 – 870 DKK",
+            period: "round-trip / person",
+            note: "Promo fares start around ₱2,500 ($45 / 315 DKK); peak holiday fares reach ₱8,500 ($150 / 1,050 DKK)."
+          },
+          carriers: [
+            {
+              name: "Philippine Airlines",
+              short: "PAL",
+              desc: "Full-service flag carrier with jet bridges and luggage options",
+              url: "https://www.philippineairlines.com",
+              badge: "Direct Jet"
+            },
+            {
+              name: "Cebu Pacific Air",
+              short: "Cebu Pacific",
+              desc: "Frequent daily low-cost flights from Manila Terminal 3",
+              url: "https://www.cebupacificair.com",
+              badge: "Multiple Daily"
+            },
+            {
+              name: "AirAsia Philippines",
+              short: "AirAsia",
+              desc: "Budget-friendly daily flights with regular seat promos",
+              url: "https://www.airasia.com",
+              badge: "Budget Fare"
+            }
+          ],
+          tips: "Bohol-Panglao Airport is located right on Panglao island. No ferry is required—you step off the plane and arrive at your beach resort in 12–15 minutes."
+        },
         beaches: [
           {
             name: "Dumaluan Beach",
@@ -468,10 +579,10 @@
           {
             title: "Loboc River Cruise with Lunch",
             desc: "A calm, gentle floating restaurant cruise down an emerald river with live acoustic music and fresh fruit, completely shielded from ocean waves.",
-            icon: "utensils"
+            icon: "music"
           },
           {
-            title: "Chocolate Hills Viewing Deck",
+            title: "Bohol Chocolate Hills Observation Deck",
             desc: "Over 1,200 symmetrical hills that look like giant cocoa puffs. An easy paved walk with observation deck.",
             icon: "mountain"
           }
@@ -482,8 +593,16 @@
         },
         gallery: [
           {
+            url: "images/panglao/hero.jpg",
+            caption: "Alona Beach & Coconut Palms - Clear sunny turquoise water and soft white sand"
+          },
+          {
+            url: "images/panglao/dumaluan-beach.jpg",
+            caption: "Dumaluan Beach - Wide shallow sand flats with ultra-calm crystal water"
+          },
+          {
             url: "images/panglao/chocolate-hills.jpg",
-            caption: "Chocolate Hills (Bohol) - Iconic natural geological monument, comfortable 45m drive"
+            caption: "Chocolate Hills (Bohol) - Iconic natural geological monument under sunny blue skies"
           },
           {
             url: "images/panglao/tarsier.jpg",
@@ -495,15 +614,11 @@
           },
           {
             url: "images/panglao/virgin-island.jpg",
-            caption: "Virgin Island Sandbar - Warm knee-deep turquoise lagoon and white sandbar"
-          },
-          {
-            url: "images/panglao/dumaluan-beach.jpg",
-            caption: "Dumaluan Beach - Wide shallow sand flats with ultra-calm waters for toddlers"
+            caption: "Virgin Island Sandbar - Warm knee-deep turquoise lagoon and pristine white sandbar"
           },
           {
             url: "images/panglao/loboc-river.jpg",
-            caption: "Loboc River Cruise - Relaxing lunch cruise down an emerald river with live music"
+            caption: "Loboc River Cruise - Relaxing scenic lunch cruise down an emerald river with live music"
           }
         ],
         itinerary: [
@@ -523,10 +638,55 @@
         badge: "Best for Walkability & Pure Beach Time",
         badgeColor: "bg-amber-100 text-amber-800 border-amber-300",
         heroImage: "images/boracay/hero.jpg",
+        googleMapsUrl: "https://maps.google.com/?q=Boracay,+Malay,+Aklan,+Philippines",
         airport: "Godofredo P. Ramos / Caticlan Airport (MPH)",
         transferTime: "5-min van to jetty, 12-min smooth boat crossing, 10-min e-trike to resort",
         boatTripDuration: "10 to 25 minutes around the island (Puka Beach, Crocodile Island)",
         gettingAround: "Walk everywhere along the 4km pedestrian-only beachfront path! Quiet electric tricycles (E-trikes) for town trips.",
+        flights: {
+          airportCode: "MPH",
+          airportName: "Godofredo P. Ramos / Caticlan Airport (MPH)",
+          routeSummary: "Direct non-stop flights from Manila (MNL), Cebu (CEB), and Clark (CRK)",
+          duration: "~1 hr 05 mins non-stop from Manila",
+          priceRange: {
+            php: "₱3,200 – ₱6,800",
+            usd: "~$55 – $120 USD",
+            dkk: "~390 – 840 DKK",
+            period: "round-trip / person",
+            note: "Promos start around ₱2,800 ($50 / 350 DKK); peak holiday departures can reach ₱9,500+ ($170 / 1,180 DKK)."
+          },
+          carriers: [
+            {
+              name: "Philippine Airlines",
+              short: "PAL",
+              desc: "Frequent direct jet services to Caticlan Airport",
+              url: "https://www.philippineairlines.com",
+              badge: "Direct Jet"
+            },
+            {
+              name: "Cebu Pacific Air",
+              short: "Cebu Pacific",
+              desc: "Up to 8–10 daily flights from Manila Terminal 3",
+              url: "https://www.cebupacificair.com",
+              badge: "Frequent Daily"
+            },
+            {
+              name: "AirAsia Philippines",
+              short: "AirAsia",
+              desc: "Competitive low-cost fares with daily frequencies",
+              url: "https://www.airasia.com",
+              badge: "Budget Fare"
+            },
+            {
+              name: "Sunlight Air",
+              short: "Sunlight Air",
+              desc: "Boutique scheduled passenger flights from Manila & Clark",
+              url: "https://www.sunlightair.ph",
+              badge: "Boutique"
+            }
+          ],
+          tips: "Always book to Caticlan (MPH) rather than Kalibo (KLO) to skip an exhausting 2-hour van transit. Caticlan Jetty Port is only 5 minutes from MPH airport."
+        },
         beaches: [
           {
             name: "White Beach (Station 1)",
@@ -592,7 +752,7 @@
           { day: "Days 1-2", plan: "Land at Caticlan Airport (MPH). Resort representative escorts family through private boat transfer (12 mins). Check in at Station 1. First splash in the calm sunset shallows." },
           { day: "Day 3", plan: "Morning sandcastle sculpting at Willy's Rock. Afternoon gelato walk along the car-free beach path. 4:30 PM Paraw sailboat sunset cruise." },
           { day: "Day 4", plan: "Private 2.5-hour gentle coastal cruise to Crocodile Island reef for fish feeding and a quiet lunch stop at Puka Beach." },
-          { day: "Days 5-6", plan: "Paddle board rental directly in front of resort; lazy beach massage for parents while kid collects tiny shells in the shallows." },
+          { day: "Days 5-6", plan: "Paddle board rental directly in front of resort; lazy beach massage for parents while kids collect tiny shells in the shallows." },
           { day: "Days 7-8", plan: "Visit D'Mall for souvenir shopping and wood-fired pizza at Aria. Afternoon poolside and golden-hour stroll." },
           { day: "Day 9", plan: "Smooth 25-minute return journey across the channel to Caticlan Airport for flight home." }
         ]
@@ -605,10 +765,48 @@
         badge: "Best for Boutique Cafes & Laid-Back Scenery",
         badgeColor: "bg-emerald-100 text-emerald-800 border-emerald-300",
         heroImage: "images/siargao/hero.jpg",
+        googleMapsUrl: "https://maps.google.com/?q=Siargao+Island,+Surigao+del+Norte,+Philippines",
         airport: "Sayak Airport, Del Carmen (IAO)",
         transferTime: "40 to 45 minutes across smooth, scenic paved roads lined with palm trees",
         boatTripDuration: "15 to 25 minutes (Naked, Daku, and Guyam Islands)",
         gettingAround: "Covered motor tricycles with colorful roofs, or private air-conditioned van hire.",
+        flights: {
+          airportCode: "IAO",
+          airportName: "Sayak Airport, Del Carmen (IAO)",
+          routeSummary: "Direct flights from Manila (MNL), Cebu (CEB), and Clark (CRK)",
+          duration: "~2 hrs 15 mins (direct from Manila) or 45 mins (from Cebu)",
+          priceRange: {
+            php: "₱6,500 – ₱12,000",
+            usd: "~$115 – $210 USD",
+            dkk: "~800 – 1,480 DKK",
+            period: "round-trip / person",
+            note: "Higher fares due to smaller turboprop/narrow-body aircraft capacity. Book 6–8 weeks in advance."
+          },
+          carriers: [
+            {
+              name: "Philippine Airlines",
+              short: "PAL",
+              desc: "Daily direct turboprop and narrow-body flights from Manila & Cebu",
+              url: "https://www.philippineairlines.com",
+              badge: "Daily Direct"
+            },
+            {
+              name: "Cebu Pacific Air",
+              short: "Cebu Pacific",
+              desc: "Daily flights connecting via Manila and Cebu hubs",
+              url: "https://www.cebupacificair.com",
+              badge: "Daily Flights"
+            },
+            {
+              name: "Sunlight Air",
+              short: "Sunlight Air",
+              desc: "Non-stop boutique flights operating from Manila and Clark",
+              url: "https://www.sunlightair.ph",
+              badge: "Boutique"
+            }
+          ],
+          tips: "Direct flights from Manila sell out quickly during high season. If direct Manila flights are full, booking a ticket connecting via Cebu (CEB) is very smooth."
+        },
         beaches: [
           {
             name: "Daku Island Beach",
@@ -646,7 +844,7 @@
         ],
         dining: {
           vibe: "Trendy, health-conscious, artisanal bakeries & cozy garden cafes",
-          spots: "Ceviche & Shaka Bowls (toddler-favorite vibrant fruit bowls), Kermit Siargao (renowned authentic Italian pasta and pizza), Roots, and Kanaloa bakery."
+          spots: "Ceviche & Shaka Bowls (vibrant tropical fruit bowls), Kermit Siargao (renowned authentic Italian pasta and pizza), Roots, and Kanaloa bakery."
         },
         gallery: [
           {
@@ -687,10 +885,55 @@
         badge: "Best for Nature, Serenity & Shortest Boat Hops",
         badgeColor: "bg-sky-100 text-sky-800 border-sky-300",
         heroImage: "images/camiguin/hero.jpg",
+        googleMapsUrl: "https://maps.google.com/?q=Camiguin+Island,+Philippines",
         airport: "Camiguin Airport, Mambajao (CGM)",
         transferTime: "10 to 20 minutes across quiet roads with virtually zero traffic",
         boatTripDuration: "10 to 15 minutes (White Island sandbar is right off the coast!)",
         gettingAround: "Tricycles, multicab vans, or rent an easy private car. The circumferential coastal road is peaceful and flat.",
+        flights: {
+          airportCode: "CGM",
+          airportName: "Camiguin Airport (CGM) / Bohol (TAG) + OceanJet Ferry",
+          routeSummary: "Direct flights from Cebu (CEB) or fly to Bohol (TAG) + 90-min fast ferry",
+          duration: "~50 mins from Cebu (CEB) or 1h 15m to Bohol + 90m scenic ferry",
+          priceRange: {
+            php: "₱4,500 – ₱8,500",
+            usd: "~$80 – $150 USD",
+            dkk: "~550 – 1,050 DKK",
+            period: "round-trip / person (all legs)",
+            note: "Direct Cebu-Camiguin round-trip is ~₱3,000–₱5,500; Manila connections or Bohol ferry combination total ~₱4,500–₱8,500."
+          },
+          carriers: [
+            {
+              name: "Philippine Airlines",
+              short: "PAL",
+              desc: "Flights from Cebu (CEB) to Camiguin and integrated Manila links",
+              url: "https://www.philippineairlines.com",
+              badge: "Cebu & Manila Link"
+            },
+            {
+              name: "Cebu Pacific / Cebgo",
+              short: "Cebu Pacific",
+              desc: "Regular ATR turboprop flights between Cebu and Camiguin",
+              url: "https://www.cebupacificair.com",
+              badge: "Regular Flights"
+            },
+            {
+              name: "Sunlight Air",
+              short: "Sunlight Air",
+              desc: "Select seasonal and scheduled flights from Manila/Clark",
+              url: "https://www.sunlightair.ph",
+              badge: "Direct Seasonal"
+            },
+            {
+              name: "OceanJet Fast Ferry",
+              short: "OceanJet",
+              desc: "Comfortable air-conditioned fast ferry between Bohol and Camiguin (90 min)",
+              url: "https://www.oceanjet.net",
+              badge: "Scenic Ferry"
+            }
+          ],
+          tips: "Many families combine Bohol and Camiguin: fly direct Manila to Bohol (TAG), spend 4 days, take the 90-min OceanJet ferry across to Camiguin for 4 days, then fly out from Camiguin or back via Bohol."
+        },
         beaches: [
           {
             name: "White Island Sandbar",
@@ -722,7 +965,7 @@
           },
           {
             title: "Katibawasan Falls Easy Viewing",
-            desc: "A dramatic 250-foot waterfall with an easy paved 2-minute flat walk from the parking lot, completely hassle-free with a stroller or young children.",
+            desc: "A dramatic 250-foot waterfall with an easy paved 2-minute flat walk from the parking lot, completely hassle-free and accessible for children of all ages.",
             icon: "droplets"
           }
         ],
@@ -763,24 +1006,52 @@
       }
     };
 
+    let currentActiveIsland = 'panglao';
+    let currentLightboxIndex = 0;
+
     function renderIsland(islandKey) {
       const data = islandData[islandKey];
       if (!data) return;
+      currentActiveIsland = islandKey;
 
       const container = document.getElementById('islandContent');
       container.innerHTML = `
         <div class="bg-white rounded-3xl shadow-sm border border-slate-200 overflow-hidden">
           
-          <!-- Island Header Banner -->
-          <div class="relative h-64 sm:h-96 w-full overflow-hidden">
+          <!-- Island Header Banner with Maps & Gallery Actions -->
+          <div class="relative h-64 sm:h-96 w-full overflow-hidden cursor-pointer group" onclick="openLightbox(0)">
             <img 
               src="${data.heroImage}" 
               alt="${data.name}" 
-              class="w-full h-full object-cover"
+              class="w-full h-full object-cover group-hover:scale-105 transition duration-500"
               onerror="this.src='https://placehold.co/1200x600/0d9488/ffffff?text=${encodeURIComponent(data.name)}'"
             />
             <div class="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-900/40 to-transparent"></div>
             
+            <!-- Quick Action Badges (Google Maps & Photos) -->
+            <div class="absolute top-4 right-4 z-10 flex items-center space-x-2">
+              <a 
+                href="${data.googleMapsUrl}" 
+                target="_blank" 
+                rel="noopener noreferrer" 
+                onclick="event.stopPropagation()" 
+                class="flex items-center space-x-1.5 px-3 py-1.5 rounded-full bg-slate-900/80 hover:bg-teal-600 text-white text-xs font-semibold backdrop-blur-md border border-white/20 transition shadow-lg"
+                title="View on Google Maps"
+              >
+                <i data-lucide="map-pin" class="w-3.5 h-3.5 text-teal-300"></i>
+                <span>Open in Google Maps</span>
+                <i data-lucide="arrow-up-right" class="w-3 h-3 text-white/70"></i>
+              </a>
+
+              <button 
+                onclick="openLightbox(0); event.stopPropagation();" 
+                class="hidden sm:flex items-center space-x-1.5 px-3 py-1.5 rounded-full bg-slate-900/80 hover:bg-slate-900 text-white text-xs font-medium backdrop-blur-md border border-white/20 transition shadow-lg"
+              >
+                <i data-lucide="camera" class="w-3.5 h-3.5 text-teal-300"></i>
+                <span>${data.gallery.length} Photos</span>
+              </button>
+            </div>
+
             <div class="absolute bottom-6 left-6 right-6 text-white">
               <div class="inline-flex items-center px-3 py-1 rounded-full text-xs font-bold border ${data.badgeColor} bg-white/90 mb-3 shadow-xs">
                 ${data.badge}
@@ -827,6 +1098,79 @@
 
           <!-- Island Details Body -->
           <div class="p-6 sm:p-10 space-y-10">
+
+            <!-- Flight Routes, Fares & Official Carrier Booking Sites -->
+            <div class="rounded-2xl bg-gradient-to-br from-slate-900 via-slate-800 to-teal-950 text-white p-6 sm:p-8 shadow-xl border border-teal-500/20">
+              <div class="flex flex-col md:flex-row md:items-center justify-between pb-6 border-b border-white/10 gap-4">
+                <div>
+                  <div class="inline-flex items-center space-x-2 px-3 py-1 rounded-full bg-teal-500/20 text-teal-300 text-xs font-semibold mb-2">
+                    <i data-lucide="plane-takeoff" class="w-3.5 h-3.5"></i>
+                    <span>Flight Logistics & Fares</span>
+                  </div>
+                  <h4 class="text-xl sm:text-2xl font-bold font-serif text-white flex items-center gap-2">
+                    Flights to ${data.name.split(' (')[0]}
+                  </h4>
+                  <p class="text-xs sm:text-sm text-slate-300 mt-1">${data.flights.routeSummary} • <span class="text-teal-300 font-medium">${data.flights.duration}</span></p>
+                </div>
+
+                <!-- Estimated Fare Box -->
+                <div class="bg-white/10 backdrop-blur-md rounded-xl p-4 border border-white/10 text-left sm:text-right shrink-0">
+                  <span class="text-[11px] uppercase tracking-wider text-teal-300 font-bold block">Estimated Round-Trip Fare</span>
+                  <div class="text-xl sm:text-2xl font-extrabold font-mono text-white mt-0.5">
+                    ${data.flights.priceRange.php}
+                  </div>
+                  <div class="text-xs text-slate-300 mt-0.5 font-medium">
+                    ${data.flights.priceRange.usd} • <span class="text-amber-300">${data.flights.priceRange.dkk}</span>
+                    <span class="text-[11px] text-slate-400 block sm:inline">(${data.flights.priceRange.period})</span>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Note on Fares -->
+              <p class="text-xs text-slate-300 mt-4 leading-relaxed">
+                💡 ${data.flights.priceRange.note}
+              </p>
+
+              <!-- Official Carrier Booking Sites -->
+              <div class="mt-6">
+                <div class="flex items-center justify-between mb-3">
+                  <h5 class="text-xs sm:text-sm font-bold uppercase tracking-wider text-slate-300 flex items-center gap-1.5">
+                    <i data-lucide="external-link" class="w-4 h-4 text-teal-400"></i>
+                    Official Airline Booking Sites
+                  </h5>
+                  <span class="text-[11px] text-teal-300 hidden sm:inline">Direct carrier booking links</span>
+                </div>
+
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3">
+                  ${data.flights.carriers.map(c => `
+                    <a 
+                      href="${c.url}" 
+                      target="_blank" 
+                      rel="noopener noreferrer" 
+                      class="group p-4 rounded-xl bg-white/5 hover:bg-white/15 border border-white/10 hover:border-teal-400/50 transition duration-200 flex flex-col justify-between"
+                    >
+                      <div>
+                        <div class="flex items-center justify-between mb-2">
+                          <span class="font-bold text-white text-sm group-hover:text-teal-300 transition">${c.name}</span>
+                          <span class="text-[10px] font-semibold px-2 py-0.5 rounded-full bg-teal-500/20 text-teal-300 border border-teal-500/30">${c.badge}</span>
+                        </div>
+                        <p class="text-xs text-slate-300 leading-snug">${c.desc}</p>
+                      </div>
+                      <div class="mt-4 pt-2.5 border-t border-white/10 flex items-center justify-between text-xs font-semibold text-teal-300 group-hover:text-teal-200">
+                        <span>Book on ${c.short}</span>
+                        <i data-lucide="arrow-up-right" class="w-3.5 h-3.5 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition"></i>
+                      </div>
+                    </a>
+                  `).join('')}
+                </div>
+              </div>
+
+              <!-- Family Flight Pro-Tip -->
+              <div class="mt-5 p-3.5 rounded-xl bg-teal-950/60 border border-teal-600/30 text-xs text-slate-200 flex items-start gap-2.5">
+                <i data-lucide="info" class="w-4 h-4 text-teal-400 shrink-0 mt-0.5"></i>
+                <span><strong class="text-teal-300">Family Booking Tip:</strong> ${data.flights.tips}</span>
+              </div>
+            </div>
 
             <!-- Beaches & Child Safety -->
             <div>
@@ -915,18 +1259,18 @@
               </div>
             </div>
 
-            <!-- Photo Gallery with Real Images -->
+            <!-- Photo Gallery with Real Images & Arrow Browsing -->
             <div>
               <div class="flex items-center justify-between mb-4">
                 <div class="flex items-center space-x-2 text-slate-800">
                   <i data-lucide="camera" class="w-6 h-6 text-teal-600"></i>
                   <h4 class="text-xl font-bold text-slate-900 font-serif">Photo Gallery: Authentic Landmark Views</h4>
                 </div>
-                <span class="text-xs text-slate-400">Click any photo to enlarge</span>
+                <span class="text-xs text-slate-500 font-medium">Click any photo to browse with arrows</span>
               </div>
               <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-3">
                 ${data.gallery.map((img, i) => `
-                  <div onclick="openLightbox('${img.url}', '${img.caption.replace(/'/g, "\\'")}')" class="group relative rounded-xl overflow-hidden aspect-4/3 bg-slate-100 border border-slate-200 cursor-pointer shadow-2xs hover:shadow-md transition">
+                  <div onclick="openLightbox(${i})" class="group relative rounded-xl overflow-hidden aspect-4/3 bg-slate-100 border border-slate-200 cursor-pointer shadow-2xs hover:shadow-md transition">
                     <img 
                       src="${img.url}" 
                       alt="${img.caption}" 
@@ -937,7 +1281,10 @@
                       <div class="self-end p-1 rounded-md bg-white/20 backdrop-blur-xs text-white">
                         <i data-lucide="maximize-2" class="w-3.5 h-3.5"></i>
                       </div>
-                      <span class="text-white text-[11px] font-medium leading-snug drop-shadow-sm">${img.caption}</span>
+                      <div>
+                        <span class="text-[10px] text-teal-300 font-mono block">${i + 1} / ${data.gallery.length}</span>
+                        <span class="text-white text-[11px] font-medium leading-snug drop-shadow-sm">${img.caption}</span>
+                      </div>
                     </div>
                   </div>
                 `).join('')}
@@ -971,7 +1318,6 @@
     }
 
     function selectIsland(id) {
-      // Update buttons
       document.querySelectorAll('.island-tab-btn').forEach(btn => {
         if (btn.getAttribute('data-id') === id) {
           btn.className = "island-tab-btn px-4 py-2 rounded-xl text-sm font-semibold transition border border-teal-600 bg-teal-600 text-white shadow-sm flex items-center space-x-1.5";
@@ -1046,7 +1392,6 @@
       document.getElementById('whatsappShareBtn').href = `https://api.whatsapp.com/send?text=${shareText}%20${shareUrl}`;
       document.getElementById('emailShareBtn').href = `mailto:?subject=${encodeURIComponent("Philippines Island Holiday Guide (Family-Friendly)")}&body=${shareText}%0A%0A${shareUrl}`;
 
-      // Use Web Share API if supported on mobile devices
       if (navigator.share && /mobile|android|iphone/i.test(navigator.userAgent)) {
         navigator.share({
           title: "Philippines Family Island Guide",
@@ -1108,15 +1453,52 @@
       }, 2500);
     }
 
-    function openLightbox(url, caption) {
+    // Lightbox with Arrow Carousel & Keyboard Navigation
+    function openLightbox(index) {
+      const island = islandData[currentActiveIsland];
+      if (!island || !island.gallery || !island.gallery.length) return;
+
+      currentLightboxIndex = Math.max(0, Math.min(index, island.gallery.length - 1));
+      updateLightboxUI();
+
       const modal = document.getElementById('imageLightbox');
-      const img = document.getElementById('lightboxImg');
-      const cap = document.getElementById('lightboxCaption');
-      img.src = url;
-      img.alt = caption;
-      cap.textContent = caption;
       modal.classList.remove('hidden');
       lucide.createIcons();
+    }
+
+    function updateLightboxUI() {
+      const island = islandData[currentActiveIsland];
+      if (!island || !island.gallery) return;
+
+      const item = island.gallery[currentLightboxIndex];
+      const img = document.getElementById('lightboxImg');
+      const cap = document.getElementById('lightboxCaption');
+      const counter = document.getElementById('lightboxCounter');
+      const name = document.getElementById('lightboxIslandName');
+
+      img.src = item.url;
+      img.alt = item.caption;
+      cap.textContent = item.caption;
+      counter.textContent = `${currentLightboxIndex + 1} / ${island.gallery.length}`;
+      name.textContent = island.name.split(' (')[0];
+    }
+
+    function prevLightbox(e) {
+      if (e) e.stopPropagation();
+      const island = islandData[currentActiveIsland];
+      if (!island || !island.gallery || !island.gallery.length) return;
+
+      currentLightboxIndex = (currentLightboxIndex - 1 + island.gallery.length) % island.gallery.length;
+      updateLightboxUI();
+    }
+
+    function nextLightbox(e) {
+      if (e) e.stopPropagation();
+      const island = islandData[currentActiveIsland];
+      if (!island || !island.gallery || !island.gallery.length) return;
+
+      currentLightboxIndex = (currentLightboxIndex + 1) % island.gallery.length;
+      updateLightboxUI();
     }
 
     function closeLightbox() {
@@ -1124,12 +1506,39 @@
       modal.classList.add('hidden');
     }
 
+    // Keyboard navigation (Arrow keys + Esc)
     document.addEventListener('keydown', (e) => {
-      if (e.key === 'Escape') {
-        closeLightbox();
+      const lightbox = document.getElementById('imageLightbox');
+      if (lightbox && !lightbox.classList.contains('hidden')) {
+        if (e.key === 'ArrowLeft' || e.key === 'Left') {
+          prevLightbox();
+        } else if (e.key === 'ArrowRight' || e.key === 'Right') {
+          nextLightbox();
+        } else if (e.key === 'Escape') {
+          closeLightbox();
+        }
+      } else if (e.key === 'Escape') {
         closeShareModal();
       }
     });
+
+    // Touch swipe gesture navigation for mobile
+    let touchStartX = 0;
+    const lightboxModal = document.getElementById('imageLightbox');
+    if (lightboxModal) {
+      lightboxModal.addEventListener('touchstart', (e) => {
+        touchStartX = e.changedTouches[0].screenX;
+      }, { passive: true });
+
+      lightboxModal.addEventListener('touchend', (e) => {
+        const touchEndX = e.changedTouches[0].screenX;
+        if (touchStartX - touchEndX > 45) {
+          nextLightbox();
+        } else if (touchEndX - touchStartX > 45) {
+          prevLightbox();
+        }
+      }, { passive: true });
+    }
 
     // Initialize on load
     window.onload = function() {

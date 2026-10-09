@@ -36,9 +36,11 @@ Travelling with kids requires a completely different logistical standard than ba
 
 ## ⚡ Interactive Features
 
-- **Side-by-Side Comparison Matrix:** Compare airport proximity, boat ride duration, wave intensity, medical access, and budget.
-- **Island Finder Matchmaker Quiz:** Answer 3 quick family preference questions to get an instant tailored recommendation.
-- **Authentic Photo Galleries with Full-Screen Lightbox:** Click any high-resolution photo to view full-size landmark views with captions (ESC or backdrop tap to close).
+- **Side-by-Side Comparison Matrix:** Compare airport proximity, boat ride duration, wave intensity, walkability, flight fares, medical access, and suitability.
+- **Flight Fares & Direct Carrier Booking:** Estimated round-trip price ranges per person in PHP, USD, and DKK with direct links to official booking sites (Philippine Airlines, Cebu Pacific, AirAsia, Sunlight Air, and OceanJet ferry).
+- **Direct Google Maps Links:** One-click spatial links for each destination to inspect geography, satellite views, and island layout.
+- **Authentic Photo Galleries with Arrow Browsing:** Click any photo to browse full-screen landmark views across that destination using on-screen arrows, keyboard arrow keys (`←`/`→`), or mobile swipe gestures.
+- **Island Finder Matchmaker Quiz:** Answer quick family preference questions to get an instant tailored recommendation.
 - **Detailed Island Breakdowns:** Day-by-day suggested itineraries, kid-approved activities, and dining spots.
 - **Share & Export Bar:** Native Web Share, direct WhatsApp sharing link, email link, and one-click PDF print for Søren and his family.
 
