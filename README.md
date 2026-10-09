@@ -1,6 +1,6 @@
-# 🌴 Philippines Island Holiday Guide for Families (5-Year-Old Friendly)
+# 🌴 Philippines Island Holiday Guide for Families & Kids
 
-A curated, interactive web guide crafted for family travel in the Philippines — specifically filtered for an **8–9 day holiday** with a **5-year-old child and parents**.
+A curated, interactive web guide crafted for family travel in the Philippines — specifically filtered for an **8–9 day holiday** with **parents and children**.
 
 **Live Site:** [https://t2mmanila-rgb.github.io/soren-travel-guide/](https://t2mmanila-rgb.github.io/soren-travel-guide/)
 
@@ -8,7 +8,7 @@ A curated, interactive web guide crafted for family travel in the Philippines �
 
 ## 🧭 Why This Guide Was Created
 
-Travelling with a 5-year-old requires a completely different logistical standard than backpacking or couple travel:
+Travelling with kids requires a completely different logistical standard than backpacking or couple travel:
 - **Zero 3+ hour bumpy van transfers** across mountain passes.
 - **Direct flight access** to modern or nearby island airports.
 - **Boating capped under 45 minutes** each way to prevent seasickness and exhaustion.
