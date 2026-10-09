@@ -1,0 +1,1084 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Philippines Island Getaways for Families</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Playfair+Display:ital,wght@0,600;0,700;1,600&display=swap" rel="stylesheet">
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+            serif: ['"Playfair Display"', 'serif'],
+          },
+          colors: {
+            brand: {
+              50: '#f0fdfa',
+              100: '#ccfbf1',
+              200: '#99f6e4',
+              500: '#14b8a6',
+              600: '#0d9488',
+              700: '#0f766e',
+              800: '#115e59',
+              900: '#134e4a',
+            },
+            coral: {
+              500: '#f97316',
+              600: '#ea580c',
+            }
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    body {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      scroll-behavior: smooth;
+    }
+    .hero-gradient {
+      background: linear-gradient(180deg, rgba(15, 23, 42, 0.45) 0%, rgba(15, 23, 42, 0.85) 100%);
+    }
+    .hide-scrollbar::-webkit-scrollbar {
+      display: none;
+    }
+    .hide-scrollbar {
+      -ms-overflow-style: none;
+      scrollbar-width: none;
+    }
+    .card-glass {
+      background: rgba(255, 255, 255, 0.95);
+      backdrop-filter: blur(12px);
+    }
+  </style>
+</head>
+<body class="bg-slate-50 text-slate-800 antialiased min-h-screen flex flex-col">
+
+  <nav class="sticky top-0 z-40 bg-white/90 backdrop-blur-md border-b border-slate-200">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex items-center justify-between h-16">
+        <div class="flex items-center space-x-3">
+          <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-teal-500 to-emerald-400 flex items-center justify-center text-white shadow-md shadow-teal-500/20">
+            <i data-lucide="palmtree" class="w-6 h-6"></i>
+          </div>
+          <div>
+            <span class="font-extrabold text-lg text-slate-900 tracking-tight">IslaFamily<span class="text-teal-600">.ph</span></span>
+            <span class="hidden sm:inline-block ml-2 px-2 py-0.5 text-xs font-semibold bg-teal-100 text-teal-800 rounded-full">5-Year-Old Friendly</span>
+          </div>
+        </div>
+        
+        <div class="flex items-center space-x-2 sm:space-x-4">
+          <button onclick="scrollToSection('islands')" class="text-sm font-medium text-slate-600 hover:text-teal-600 px-3 py-2 rounded-lg transition">The 4 Islands</button>
+          <button onclick="scrollToSection('comparison')" class="text-sm font-medium text-slate-600 hover:text-teal-600 px-3 py-2 rounded-lg transition">Compare</button>
+          <button onclick="scrollToSection('matchmaker')" class="hidden md:flex text-sm font-medium bg-slate-100 hover:bg-slate-200 text-slate-700 px-3 py-1.5 rounded-lg transition items-center space-x-1.5">
+            <i data-lucide="sparkles" class="w-4 h-4 text-teal-600"></i>
+            <span>Island Finder</span>
+          </button>
+          <button onclick="openShareModal()" class="text-sm font-semibold bg-teal-600 hover:bg-teal-700 text-white px-3.5 py-1.5 rounded-lg shadow-sm transition flex items-center space-x-1.5">
+            <i data-lucide="share-2" class="w-4 h-4"></i>
+            <span>Share Guide</span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Share Modal Dialog -->
+  <div id="shareModal" class="fixed inset-0 z-50 bg-slate-900/60 backdrop-blur-xs flex items-center justify-center p-4 hidden">
+    <div class="bg-white rounded-2xl max-w-md w-full p-6 shadow-2xl border border-slate-200 relative animate-fade-in">
+      <button onclick="closeShareModal()" class="absolute top-4 right-4 text-slate-400 hover:text-slate-700 p-1 rounded-lg">
+        <i data-lucide="x" class="w-5 h-5"></i>
+      </button>
+
+      <div class="flex items-center space-x-3 mb-4">
+        <div class="w-10 h-10 rounded-xl bg-teal-100 text-teal-700 flex items-center justify-center">
+          <i data-lucide="send" class="w-5 h-5"></i>
+        </div>
+        <div>
+          <h3 class="text-lg font-bold text-slate-900">Share This Trip Guide</h3>
+          <p class="text-xs text-slate-500">Send directly to your brother & family</p>
+        </div>
+      </div>
+
+      <div class="space-y-3">
+        <!-- WhatsApp -->
+        <a id="whatsappShareBtn" href="#" target="_blank" class="flex items-center justify-between p-3 rounded-xl bg-emerald-50 hover:bg-emerald-100 border border-emerald-200 text-emerald-900 transition">
+          <div class="flex items-center space-x-3">
+            <i data-lucide="message-circle" class="w-5 h-5 text-emerald-600"></i>
+            <span class="text-sm font-semibold">Share via WhatsApp</span>
+          </div>
+          <i data-lucide="external-link" class="w-4 h-4 text-emerald-600"></i>
+        </a>
+
+        <!-- Email -->
+        <a id="emailShareBtn" href="#" class="flex items-center justify-between p-3 rounded-xl bg-sky-50 hover:bg-sky-100 border border-sky-200 text-sky-900 transition">
+          <div class="flex items-center space-x-3">
+            <i data-lucide="mail" class="w-5 h-5 text-sky-600"></i>
+            <span class="text-sm font-semibold">Send via Email</span>
+          </div>
+          <i data-lucide="arrow-right" class="w-4 h-4 text-sky-600"></i>
+        </a>
+
+        <!-- Print / PDF -->
+        <button onclick="window.print()" class="w-full flex items-center justify-between p-3 rounded-xl bg-slate-50 hover:bg-slate-100 border border-slate-200 text-slate-800 transition">
+          <div class="flex items-center space-x-3">
+            <i data-lucide="printer" class="w-5 h-5 text-slate-600"></i>
+            <span class="text-sm font-semibold">Save or Print as PDF</span>
+          </div>
+          <i data-lucide="download" class="w-4 h-4 text-slate-400"></i>
+        </button>
+
+        <!-- Copy Link Box -->
+        <div class="pt-2">
+          <label class="block text-xs font-semibold text-slate-600 uppercase tracking-wider mb-1.5">Direct Web Link</label>
+          <div class="flex items-center space-x-2">
+            <input id="shareUrlInput" type="text" readonly class="flex-1 bg-slate-100 border border-slate-200 rounded-xl px-3 py-2 text-xs text-slate-700 select-all outline-none" />
+            <button onclick="copyShareUrl()" class="px-3.5 py-2 bg-teal-600 hover:bg-teal-700 text-white rounded-xl text-xs font-semibold flex items-center space-x-1 shrink-0 transition">
+              <i data-lucide="copy" class="w-3.5 h-3.5"></i>
+              <span id="copyBtnText">Copy</span>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Copied Toast -->
+  <div id="toastNotification" class="fixed bottom-6 right-6 z-50 bg-slate-900 text-white px-4 py-2.5 rounded-xl shadow-lg border border-slate-700 text-xs font-medium flex items-center space-x-2 transition-all duration-300 opacity-0 pointer-events-none translate-y-2">
+    <i data-lucide="check-circle" class="w-4 h-4 text-teal-400"></i>
+    <span id="toastMessage">Link copied to clipboard!</span>
+  </div>
+
+  <header class="relative bg-slate-900 py-16 sm:py-24 overflow-hidden">
+    <img 
+      src="https://images.unsplash.com/photo-1518509562904-e7ef99cdcc86?q=80&w=1920&auto=format&fit=crop" 
+      alt="Philippine Tropical Beach" 
+      class="absolute inset-0 w-full h-full object-cover object-center opacity-40 mix-blend-overlay"
+      onerror="this.src='https://placehold.co/1920x800/0f766e/ffffff?text=Tropical+Islands+Philippines'"
+    />
+    <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center text-white">
+      <div class="inline-flex items-center space-x-2 px-3.5 py-1.5 rounded-full bg-teal-500/20 border border-teal-300/30 text-teal-200 text-xs sm:text-sm font-medium mb-6 backdrop-blur-sm">
+        <i data-lucide="check-circle" class="w-4 h-4 text-teal-400"></i>
+        <span>Filtered for Family: 8-9 Days • Low Friction • Child-Safe Waters</span>
+      </div>
+
+      <h1 class="text-3xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight font-serif text-white max-w-4xl mx-auto leading-tight">
+        The Perfect Philippine Island for a 5-Year-Old & Parents
+      </h1>
+      
+      <p class="mt-5 text-base sm:text-lg text-slate-200 max-w-3xl mx-auto font-light leading-relaxed">
+        Say goodbye to 4-hour van rides and bumpy 3-hour open-ocean ferries. These four handpicked islands feature 
+        <strong class="text-white font-semibold">direct airport access</strong>, <strong class="text-white font-semibold">gentle shallow beaches</strong>, 
+        walkable or easy trike dining, and boat excursions capped at <strong class="text-white font-semibold">under 45 minutes</strong> each way.
+      </p>
+
+      <!-- Key Criteria Badges -->
+      <div class="mt-8 grid grid-cols-2 sm:grid-cols-4 gap-3 max-w-4xl mx-auto text-left">
+        <div class="bg-white/10 backdrop-blur-md p-3.5 rounded-xl border border-white/15">
+          <div class="flex items-center space-x-2 text-teal-300 font-semibold text-xs sm:text-sm">
+            <i data-lucide="plane-landing" class="w-4 h-4"></i>
+            <span>Direct Flights</span>
+          </div>
+          <p class="text-xs text-slate-300 mt-1">Fly straight to island airport or brief smooth crossing.</p>
+        </div>
+        <div class="bg-white/10 backdrop-blur-md p-3.5 rounded-xl border border-white/15">
+          <div class="flex items-center space-x-2 text-amber-300 font-semibold text-xs sm:text-sm">
+            <i data-lucide="clock" class="w-4 h-4"></i>
+            <span>Max 45m Boats</span>
+          </div>
+          <p class="text-xs text-slate-300 mt-1">Short hops so toddlers don't get seasick or exhausted.</p>
+        </div>
+        <div class="bg-white/10 backdrop-blur-md p-3.5 rounded-xl border border-white/15">
+          <div class="flex items-center space-x-2 text-sky-300 font-semibold text-xs sm:text-sm">
+            <i data-lucide="waves" class="w-4 h-4"></i>
+            <span>Calm Shallows</span>
+          </div>
+          <p class="text-xs text-slate-300 mt-1">Waist-deep safe lagoons and soft powder white sand.</p>
+        </div>
+        <div class="bg-white/10 backdrop-blur-md p-3.5 rounded-xl border border-white/15">
+          <div class="flex items-center space-x-2 text-emerald-300 font-semibold text-xs sm:text-sm">
+            <i data-lucide="utensils" class="w-4 h-4"></i>
+            <span>Nearby Dining</span>
+          </div>
+          <p class="text-xs text-slate-300 mt-1">Kid-friendly pizza, gelato, pasta & fruit shakes nearby.</p>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main class="flex-grow max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 w-full">
+
+    <!-- Island Switcher Tabs -->
+    <div id="islands" class="mb-8 scroll-mt-24">
+      <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between pb-4 border-b border-slate-200 gap-4">
+        <div>
+          <h2 class="text-2xl sm:text-3xl font-bold text-slate-900 font-serif">Explore the 4 Contenders</h2>
+          <p class="text-sm text-slate-500">Click an island to inspect travel logistics, kid safety, boat times, and photo galleries.</p>
+        </div>
+
+        <!-- Quick filter pills -->
+        <div class="flex items-center gap-2 overflow-x-auto pb-2 sm:pb-0 hide-scrollbar" id="islandNav">
+          <button onclick="selectIsland('panglao')" class="island-tab-btn px-4 py-2 rounded-xl text-sm font-semibold transition border border-teal-600 bg-teal-600 text-white shadow-sm flex items-center space-x-1.5" data-id="panglao">
+            <span>🐢 Panglao (Bohol)</span>
+          </button>
+          <button onclick="selectIsland('boracay')" class="island-tab-btn px-4 py-2 rounded-xl text-sm font-semibold transition border border-slate-200 bg-white text-slate-700 hover:border-teal-500 flex items-center space-x-1.5" data-id="boracay">
+            <span>🏖️ Boracay</span>
+          </button>
+          <button onclick="selectIsland('siargao')" class="island-tab-btn px-4 py-2 rounded-xl text-sm font-semibold transition border border-slate-200 bg-white text-slate-700 hover:border-teal-500 flex items-center space-x-1.5" data-id="siargao">
+            <span>🌴 Siargao</span>
+          </button>
+          <button onclick="selectIsland('camiguin')" class="island-tab-btn px-4 py-2 rounded-xl text-sm font-semibold transition border border-slate-200 bg-white text-slate-700 hover:border-teal-500 flex items-center space-x-1.5" data-id="camiguin">
+            <span>🌋 Camiguin</span>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <div id="islandContent" class="transition-all duration-300">
+      <!-- Dynamic Javascript Content Injected Here -->
+    </div>
+
+    <section id="comparison" class="mt-20 scroll-mt-24">
+      <div class="text-center max-w-3xl mx-auto mb-10">
+        <h2 class="text-2xl sm:text-3xl font-bold text-slate-900 font-serif">Side-by-Side Family Comparison</h2>
+        <p class="text-sm sm:text-base text-slate-600 mt-2">
+          Compare the logistics that matter most when traveling with a 5-year-old child:
+        </p>
+      </div>
+
+      <div class="overflow-x-auto bg-white rounded-2xl shadow-sm border border-slate-200">
+        <table class="w-full text-left text-sm">
+          <thead class="bg-slate-100/75 border-b border-slate-200 text-slate-700 uppercase tracking-wider text-xs font-semibold">
+            <tr>
+              <th class="p-4 sm:p-5">Feature</th>
+              <th class="p-4 sm:p-5 text-teal-800 bg-teal-50/50">Panglao (Bohol)</th>
+              <th class="p-4 sm:p-5 text-amber-800 bg-amber-50/50">Boracay</th>
+              <th class="p-4 sm:p-5 text-emerald-800 bg-emerald-50/50">Siargao</th>
+              <th class="p-4 sm:p-5 text-sky-800 bg-sky-50/50">Camiguin</th>
+            </tr>
+          </thead>
+          <tbody class="divide-y divide-slate-100">
+            <tr>
+              <td class="p-4 sm:p-5 font-semibold text-slate-900 flex items-center gap-1.5">
+                <i data-lucide="plane" class="w-4 h-4 text-teal-600"></i> Airport Arrival
+              </td>
+              <td class="p-4 sm:p-5 text-slate-700 bg-teal-50/20">Direct flight into Bohol-Panglao (TAG). 10-15 min taxi to resort.</td>
+              <td class="p-4 sm:p-5 text-slate-700 bg-amber-50/20">Fly to Caticlan (MPH). 5m van + 12m smooth boat + 10m e-trike.</td>
+              <td class="p-4 sm:p-5 text-slate-700 bg-emerald-50/20">Direct flight to Sayak (IAO). 45 min paved scenic van transfer.</td>
+              <td class="p-4 sm:p-5 text-slate-700 bg-sky-50/20">Direct flight to Camiguin (CGM). 10-15 min resort transfer.</td>
+            </tr>
+            <tr>
+              <td class="p-4 sm:p-5 font-semibold text-slate-900 flex items-center gap-1.5">
+                <i data-lucide="ship" class="w-4 h-4 text-teal-600"></i> Island Hopping Distance
+              </td>
+              <td class="p-4 sm:p-5 text-slate-700 bg-teal-50/20"><span class="font-bold text-teal-700">35–45 min</span> to Balicasag Turtles; 20 min to Virgin Island sandbar.</td>
+              <td class="p-4 sm:p-5 text-slate-700 bg-amber-50/20"><span class="font-bold text-teal-700">10–25 min</span> to Puka Shell Beach, Crocodile Island, Ilig-Iligan.</td>
+              <td class="p-4 sm:p-5 text-slate-700 bg-emerald-50/20"><span class="font-bold text-teal-700">20–30 min</span> between Naked, Daku, and Guyam islands.</td>
+              <td class="p-4 sm:p-5 text-slate-700 bg-sky-50/20"><span class="font-bold text-teal-700">10–15 min</span> to White Island sandbar; 15m to Mantigue Island.</td>
+            </tr>
+            <tr>
+              <td class="p-4 sm:p-5 font-semibold text-slate-900 flex items-center gap-1.5">
+                <i data-lucide="waves" class="w-4 h-4 text-teal-600"></i> Water Safety for 5yo
+              </td>
+              <td class="p-4 sm:p-5 text-slate-700 bg-teal-50/20">Dumaluan Beach has ultra-flat, ankle-to-knee deep waters with zero waves.</td>
+              <td class="p-4 sm:p-5 text-slate-700 bg-amber-50/20">Station 1 has huge calm shallow shelf, silky sand, zero sharp coral.</td>
+              <td class="p-4 sm:p-5 text-slate-700 bg-emerald-50/20">Daku & Guyam have calm lagoons; main town beach is surfy (needs pool/island trips).</td>
+              <td class="p-4 sm:p-5 text-slate-700 bg-sky-50/20">White Island has clear gentle shallows; Mantigue has calm protected lagoon.</td>
+            </tr>
+            <tr>
+              <td class="p-4 sm:p-5 font-semibold text-slate-900 flex items-center gap-1.5">
+                <i data-lucide="utensils-crossed" class="w-4 h-4 text-teal-600"></i> Dining & Strollers
+              </td>
+              <td class="p-4 sm:p-5 text-slate-700 bg-teal-50/20">Alona strip is packed with pizzerias, Italian, and Filipino grills. Easy trikes.</td>
+              <td class="p-4 sm:p-5 text-slate-700 bg-amber-50/20"><strong class="text-amber-700">Best in the Philippines.</strong> 4km car-free beach walk with hundreds of cafes.</td>
+              <td class="p-4 sm:p-5 text-slate-700 bg-emerald-50/20">Amazing trendy sourdough bakeries, smoothie bowls, wood-fired pizza in General Luna.</td>
+              <td class="p-4 sm:p-5 text-slate-700 bg-sky-50/20">Quaint, quiet home-style bistros, Italian dining (Luna Ristorante), and beach shacks.</td>
+            </tr>
+            <tr>
+              <td class="p-4 sm:p-5 font-semibold text-slate-900 flex items-center gap-1.5">
+                <i data-lucide="heart" class="w-4 h-4 text-teal-600"></i> Top 5-Year-Old Highlight
+              </td>
+              <td class="p-4 sm:p-5 text-slate-700 bg-teal-50/20 font-medium">Seeing live green sea turtles & tiny big-eyed Tarsiers in Bohol!</td>
+              <td class="p-4 sm:p-5 text-slate-700 bg-amber-50/20 font-medium">Building sandcastles on flour-fine sand & sunset Paraw sailing.</td>
+              <td class="p-4 sm:p-5 text-slate-700 bg-emerald-50/20 font-medium">Maasin River gentle boat cruise, tide pools & running around Guyam island.</td>
+              <td class="p-4 sm:p-5 text-slate-700 bg-sky-50/20 font-medium">Warm bath-like Ardent Hot Springs & clams sanctuary on Mantigue.</td>
+            </tr>
+            <tr>
+              <td class="p-4 sm:p-5 font-semibold text-slate-900 flex items-center gap-1.5">
+                <i data-lucide="star" class="w-4 h-4 text-teal-600"></i> Family Suitability Score
+              </td>
+              <td class="p-4 sm:p-5 bg-teal-50/20"><span class="inline-block px-2.5 py-1 rounded-full text-xs font-bold bg-teal-100 text-teal-800">10 / 10 • All-Rounder</span></td>
+              <td class="p-4 sm:p-5 bg-amber-50/20"><span class="inline-block px-2.5 py-1 rounded-full text-xs font-bold bg-amber-100 text-amber-800">9.8 / 10 • Pure Beach Ease</span></td>
+              <td class="p-4 sm:p-5 bg-emerald-50/20"><span class="inline-block px-2.5 py-1 rounded-full text-xs font-bold bg-emerald-100 text-emerald-800">9.0 / 10 • Hip & Scenic</span></td>
+              <td class="p-4 sm:p-5 bg-sky-50/20"><span class="inline-block px-2.5 py-1 rounded-full text-xs font-bold bg-sky-100 text-sky-800">9.2 / 10 • Peaceful Nature</span></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <section id="matchmaker" class="mt-20 scroll-mt-24 bg-gradient-to-br from-teal-900 to-slate-900 text-white rounded-3xl p-6 sm:p-10 shadow-xl relative overflow-hidden">
+      <div class="relative z-10 max-w-3xl mx-auto text-center">
+        <div class="inline-flex items-center space-x-2 px-3 py-1 rounded-full bg-teal-400/20 text-teal-300 text-xs font-semibold uppercase tracking-wider mb-3">
+          <i data-lucide="compass" class="w-4 h-4"></i>
+          <span>Interactive Matchmaker</span>
+        </div>
+        <h2 class="text-2xl sm:text-4xl font-serif font-bold text-white">Which Island is Best for Your Brother's Family?</h2>
+        <p class="text-slate-300 text-sm sm:text-base mt-2">
+          Pick their main vacation priority below and see the tailored verdict.
+        </p>
+
+        <div class="mt-8 grid grid-cols-1 sm:grid-cols-2 gap-3 text-left">
+          <button onclick="showMatch('boracay')" class="p-4 rounded-xl bg-white/10 hover:bg-white/20 border border-white/10 transition text-left group">
+            <div class="font-bold text-teal-300 text-base group-hover:text-teal-200">"We want to walk everywhere barefoot & have 50 dining choices outside our door"</div>
+            <p class="text-xs text-slate-300 mt-1">Zero vehicle stress, stroll on flour sand with child directly to lunch or dinner.</p>
+          </button>
+          
+          <button onclick="showMatch('panglao')" class="p-4 rounded-xl bg-white/10 hover:bg-white/20 border border-white/10 transition text-left group">
+            <div class="font-bold text-amber-300 text-base group-hover:text-amber-200">"We want the smoothest arrival + wildlife our 5yo will remember forever"</div>
+            <p class="text-xs text-slate-300 mt-1">Direct airport taxi in 12 min, sea turtles, tarsiers, chocolate hills, and calm beaches.</p>
+          </button>
+
+          <button onclick="showMatch('siargao')" class="p-4 rounded-xl bg-white/10 hover:bg-white/20 border border-white/10 transition text-left group">
+            <div class="font-bold text-emerald-300 text-base group-hover:text-emerald-200">"We love boutique cafes, smoothie bowls & lush palm tree landscapes"</div>
+            <p class="text-xs text-slate-300 mt-1">Relaxed island vibe, great international bakeries, short 20-min island hops.</p>
+          </button>
+
+          <button onclick="showMatch('camiguin')" class="p-4 rounded-xl bg-white/10 hover:bg-white/20 border border-white/10 transition text-left group">
+            <div class="font-bold text-sky-300 text-base group-hover:text-sky-200">"We want zero tourist crowds, hot springs & an untouched 10-minute sandbar"</div>
+            <p class="text-xs text-slate-300 mt-1">Super safe, tiny circular island with virtually no traffic and gentle spring waters.</p>
+          </button>
+        </div>
+
+        <div id="matchResult" class="mt-8 hidden p-5 rounded-2xl bg-white/15 border border-teal-400/40 text-left animate-fade-in">
+          <!-- Injected via JavaScript -->
+        </div>
+      </div>
+    </section>
+
+    <section class="mt-20 bg-slate-100/80 rounded-2xl p-6 sm:p-8 border border-slate-200">
+      <div class="flex items-center space-x-3 mb-6">
+        <div class="w-10 h-10 rounded-xl bg-amber-500 text-white flex items-center justify-center font-bold">
+          <i data-lucide="life-buoy" class="w-6 h-6"></i>
+        </div>
+        <div>
+          <h3 class="text-xl font-bold text-slate-900">Tips for Traveling in the Philippines with a 5-Year-Old</h3>
+          <p class="text-xs sm:text-sm text-slate-500">Crucial tips to make an 8-9 day island stay effortless.</p>
+        </div>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6 text-sm text-slate-700">
+        <div class="bg-white p-4 rounded-xl shadow-xs border border-slate-200/80">
+          <h4 class="font-bold text-slate-900 flex items-center gap-2 mb-2">
+            <i data-lucide="sailboat" class="w-4 h-4 text-teal-600"></i> Always Book Private Banca Boats
+          </h4>
+          <p class="text-xs text-slate-600 leading-relaxed">
+            Never join large group joiner tours. A private boat costs only ~$35-$65 USD for the entire family. It lets you depart at 7:30 AM before the heat, head back whenever the child is tired, and avoids waiting for 15 strangers.
+          </p>
+        </div>
+
+        <div class="bg-white p-4 rounded-xl shadow-xs border border-slate-200/80">
+          <h4 class="font-bold text-slate-900 flex items-center gap-2 mb-2">
+            <i data-lucide="shield-check" class="w-4 h-4 text-amber-600"></i> Pack Child Rashguards & Water Shoes
+          </h4>
+          <p class="text-xs text-slate-600 leading-relaxed">
+            The midday tropical sun is strong. Long-sleeve UPF 50 rashguards eliminate sunscreen battles. Neoprene water shoes protect little feet from small coral pieces or sea grass while wading in ankle-deep sandbars.
+          </p>
+        </div>
+
+        <div class="bg-white p-4 rounded-xl shadow-xs border border-slate-200/80">
+          <h4 class="font-bold text-slate-900 flex items-center gap-2 mb-2">
+            <i data-lucide="bed-double" class="w-4 h-4 text-emerald-600"></i> Pick Direct Beachfront Resorts
+          </h4>
+          <p class="text-xs text-slate-600 leading-relaxed">
+            Staying directly on the sand (e.g., South Palms on Dumaluan or Station 1 in Boracay) means one parent can easily take the 5-year-old for an afternoon nap while the other stays enjoying the beach just 20 meters away.
+          </p>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="bg-slate-900 text-slate-400 py-10 mt-16 border-t border-slate-800 text-xs sm:text-sm">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row items-center justify-between gap-4">
+      <div class="flex items-center space-x-2 text-white">
+        <i data-lucide="palmtree" class="w-5 h-5 text-teal-400"></i>
+        <span class="font-bold text-base">Philippines Family Holiday Guide</span>
+      </div>
+      <p class="text-slate-400 text-center sm:text-right">
+        Tailored recommendation for an 8-9 day vacation with parents and a 5-year-old child.
+      </p>
+    </div>
+  </footer>
+
+  <script>
+    const islandData = {
+      panglao: {
+        id: "panglao",
+        name: "Panglao Island (Bohol)",
+        tagline: "The Overall Family Champion: Airport on the Island, Turtles & Tarsiers",
+        badge: "Top Recommendation for Families",
+        badgeColor: "bg-teal-100 text-teal-800 border-teal-300",
+        heroImage: "https://images.unsplash.com/photo-1544735716-392fe2489ffa?q=80&w=1200&auto=format&fit=crop",
+        airport: "Bohol-Panglao International Airport (TAG)",
+        transferTime: "10 to 15 minutes by air-conditioned van or taxi",
+        boatTripDuration: "25 to 40 minutes (Balicasag Island & Virgin Island Sandbar)",
+        gettingAround: "Short tricycle trips ($1.50) or comfortable private air-conditioned van hire ($45/day).",
+        beaches: [
+          {
+            name: "Dumaluan Beach",
+            desc: "The absolute gold standard for a 5-year-old. Super wide, shallow white sand shelf where kids can safely wade out 40 meters in calm ankle-to-knee deep water with virtually zero waves.",
+            highlight: "Ultra-calm & safe"
+          },
+          {
+            name: "Alona Beach",
+            desc: "Vibrant 1.5km beach promenade lined with palms, open-air seafood displays, Italian gelato counters, and pizza spots. Great for evening family strolls.",
+            highlight: "Dining hub"
+          }
+        ],
+        islandHopping: {
+          title: "Balicasag Marine Reserve & Virgin Island Sandbar",
+          duration: "30-40 min banca boat ride per way",
+          desc: "Banca boats pull right up onto Alona or Dumaluan beach. A gentle 35-minute cruise brings you to Balicasag, where huge sea turtles graze on sea grass in water clear enough for a 5yo to view directly from the boat or with a child life vest.",
+          stops: ["Balicasag Green Sea Turtle Haven", "Virgin Island Crescent Sandbar (knee-deep warm lagoon)", "Dolphin watching in the morning bay"]
+        },
+        kidActivities: [
+          {
+            title: "Philippine Tarsier Sanctuary (Corella)",
+            desc: "Located 40 minutes away across the bridge on Bohol. Kids will be mesmerized by these tiny, quiet, wide-eyed primates in a protected lush jungle sanctuary.",
+            icon: "eye"
+          },
+          {
+            title: "Loboc River Cruise with Lunch",
+            desc: "A calm, gentle floating restaurant cruise down an emerald river with live acoustic music and fresh fruit, completely shielded from ocean waves.",
+            icon: "utensils"
+          },
+          {
+            title: "Chocolate Hills Viewing Deck",
+            desc: "Over 1,200 symmetrical hills that look like giant cocoa puffs. An easy paved walk with observation deck.",
+            icon: "mountain"
+          }
+        ],
+        dining: {
+          vibe: "Casual, family-friendly, and very diverse",
+          spots: "Giuseppe Pizzeria (superb thin-crust wood-fired pizza), Shaka Bohol (fresh tropical fruit bowls & smoothies), Barwoo (Asian comfort food), and South Palms Beach Bar (dining feet-in-the-sand under coconut trees)."
+        },
+        gallery: [
+          {
+            url: "https://images.unsplash.com/photo-1544735716-392fe2489ffa?q=80&w=900&auto=format&fit=crop",
+            caption: "Chocolate Hills in mainland Bohol - 45 min comfortable drive"
+          },
+          {
+            url: "https://images.unsplash.com/photo-1518509562904-e7ef99cdcc86?q=80&w=900&auto=format&fit=crop",
+            caption: "Crystal clear calm shallows around Panglao & Balicasag"
+          },
+          {
+            url: "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?q=80&w=900&auto=format&fit=crop",
+            caption: "Dumaluan Beach white sand flats - safe wading for 5yo"
+          },
+          {
+            url: "https://images.unsplash.com/photo-1589556264800-08ae9e129a8c?q=80&w=900&auto=format&fit=crop",
+            caption: "Balicasag Island coral reef & sea turtle sanctuary"
+          }
+        ],
+        itinerary: [
+          { day: "Days 1-2", plan: "Land at Bohol-Panglao Airport, 12-min transfer to Dumaluan beachfront resort (e.g. South Palms or BBC). Unpack, relax in shallow water and build sandcastles." },
+          { day: "Day 3", plan: "Morning private boat (7:45 AM) to Balicasag Island for calm turtle watching & Virgin Island sandbar wading. Back to resort by 12:30 PM for lunch & afternoon pool play." },
+          { day: "Day 4", plan: "Private air-con van day trip: Visit the quiet Tarsier Sanctuary, enjoy the Loboc River scenic lunch cruise, view Chocolate Hills. Return by 4 PM." },
+          { day: "Days 5-6", plan: "Lazy beach days, paddle boarding in flat lagoons, gelato tasting on Alona Beach, family beachfront dinner under coconut palms." },
+          { day: "Days 7-8", plan: "Pamilacan Island dolphin spotting (optional 30 min boat) or Bohol Bee Farm organic ice cream & honey farm tour. Sunset dinner." },
+          { day: "Day 9", plan: "Casual breakfast, quick 15-minute hop to the airport for the direct return flight." }
+        ]
+      },
+
+      boracay: {
+        id: "boracay",
+        name: "Boracay Island",
+        tagline: "The Walkable Beachfront Wonderland: Flour-Soft Sand & 0-Minute Trike Commutes",
+        badge: "Best for Walkability & Pure Beach Time",
+        badgeColor: "bg-amber-100 text-amber-800 border-amber-300",
+        heroImage: "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?q=80&w=1200&auto=format&fit=crop",
+        airport: "Godofredo P. Ramos / Caticlan Airport (MPH)",
+        transferTime: "5-min van to jetty, 12-min smooth boat crossing, 10-min e-trike to resort",
+        boatTripDuration: "10 to 25 minutes around the island (Puka Beach, Crocodile Island)",
+        gettingAround: "Walk everywhere along the 4km pedestrian-only beachfront path! Quiet electric tricycles (E-trikes) for town trips.",
+        beaches: [
+          {
+            name: "White Beach (Station 1)",
+            desc: "The premier family location on the island. Sand as fine as baker's flour, zero rocks, and a very wide, shallow water shelf where toddlers can play safely for dozens of meters.",
+            highlight: "Flour-fine sand & calm water"
+          },
+          {
+            name: "Puka Shell Beach",
+            desc: "On the northern tip of Boracay. A quieter, scenic beach characterized by tiny puka shell fragments and emerald water. Accessible via a 15-minute e-trike ride or short boat hop.",
+            highlight: "Scenic & quiet"
+          }
+        ],
+        islandHopping: {
+          title: "Paraw Sunset Sailing & Coastal Coves",
+          duration: "10-25 min maximum per hop",
+          desc: "Boracay's island hopping is the shortest of all. You simply cruise around the island's own coves (Crocodile Island reef, Coral Garden, and Ilig-Iligan). The signature experience is renting a double-outrigger Paraw sailboat for a 30-minute silent sunset glide.",
+          stops: ["Crocodile Island shallow fish sanctuary", "Puka Beach picnic & fresh coconuts", "Paraw Sunset Sail"]
+        },
+        kidActivities: [
+          {
+            title: "Willy's Rock & Sandcastle Sculpting",
+            desc: "Iconic volcanic rock formation right off Station 1 in shallow water. Kids love climbing the small carved steps at low tide and digging with local sandcastle artists.",
+            icon: "castle"
+          },
+          {
+            title: "Traditional Paraw Sailboat Sunset Ride",
+            desc: "Wind-powered catamaran boats with mesh outriggers where parents and children can sit over the blue water without noisy engine smoke.",
+            icon: "wind"
+          },
+          {
+            title: "Stand Up Paddleboarding in Glass-Flat Water",
+            desc: "Station 1 water is so flat in peak season (Nov-May) that a 5yo can easily sit on the front of a parent's paddleboard safely.",
+            icon: "waves"
+          }
+        ],
+        dining: {
+          vibe: "Unmatched variety, 100% walkable on foot without crossing roads",
+          spots: "Aria Cucina Italiana (authentic pizza right on the beach), Nonie's (healthy bowls and kid favorites), Jonah's Fruit Shake (legendary mango and banana shakes), and Real Coffee & Tea Cafe (famous calamansi muffins)."
+        },
+        gallery: [
+          {
+            url: "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?q=80&w=900&auto=format&fit=crop",
+            caption: "White Beach Station 1 - wide, calm shallows safe for 5-year-olds"
+          },
+          {
+            url: "https://images.unsplash.com/photo-1540555700478-4be289fbecef?q=80&w=900&auto=format&fit=crop",
+            caption: "Tropical coconut palm fringes directly along pedestrian beach pathway"
+          },
+          {
+            url: "https://images.unsplash.com/photo-1512100356356-de1b84283e18?q=80&w=900&auto=format&fit=crop",
+            caption: "Paraw sailboats gliding quietly across calm turquoise waters"
+          },
+          {
+            url: "https://images.unsplash.com/photo-1533105079780-92b9be482077?q=80&w=900&auto=format&fit=crop",
+            caption: "Sunset over White Beach - warm evenings with foot-in-sand dining"
+          }
+        ],
+        itinerary: [
+          { day: "Days 1-2", plan: "Land at Caticlan Airport (MPH). Resort representative escorts family through private boat transfer (12 mins). Check in at Station 1. First splash in the calm sunset shallows." },
+          { day: "Day 3", plan: "Morning sandcastle sculpting at Willy's Rock. Afternoon gelato walk along the car-free beach path. 4:30 PM Paraw sailboat sunset cruise." },
+          { day: "Day 4", plan: "Private 2.5-hour gentle coastal cruise to Crocodile Island reef for fish feeding and a quiet lunch stop at Puka Beach." },
+          { day: "Days 5-6", plan: "Paddle board rental directly in front of resort; lazy beach massage for parents while kid collects tiny shells in the shallows." },
+          { day: "Days 7-8", plan: "Visit D'Mall for souvenir shopping and wood-fired pizza at Aria. Afternoon poolside and golden-hour stroll." },
+          { day: "Day 9", plan: "Smooth 25-minute return journey across the channel to Caticlan Airport for flight home." }
+        ]
+      },
+
+      siargao: {
+        id: "siargao",
+        name: "Siargao Island",
+        tagline: "The Lush Bohemian Island: Palm Groves, Calm River Floats & Islet Hops",
+        badge: "Best for Boutique Cafes & Laid-Back Scenery",
+        badgeColor: "bg-emerald-100 text-emerald-800 border-emerald-300",
+        heroImage: "https://images.unsplash.com/photo-1537996194471-e657df975ab4?q=80&w=1200&auto=format&fit=crop",
+        airport: "Sayak Airport, Del Carmen (IAO)",
+        transferTime: "40 to 45 minutes across smooth, scenic paved roads lined with palm trees",
+        boatTripDuration: "15 to 25 minutes (Naked, Daku, and Guyam Islands)",
+        gettingAround: "Covered motor tricycles with colorful roofs, or private air-conditioned van hire.",
+        beaches: [
+          {
+            name: "Daku Island Beach",
+            desc: "A stunning tropical island stop during the Tri-Island tour. Wide coconut grove beach with warm, gentle swimmable waters where local fishermen cook grilled lunch under open huts.",
+            highlight: "Spacious shaded shallows"
+          },
+          {
+            name: "Guyam Island Lagoon",
+            desc: "A tiny postcard-sized circular islet packed with coconut trees. The reef side has natural flat wading pools where 5-year-olds can safely hunt for hermit crabs.",
+            highlight: "Miniature paradise"
+          }
+        ],
+        islandHopping: {
+          title: "The Classic Tri-Island Tour (Guyam, Daku, Naked)",
+          duration: "15-20 min between each island",
+          desc: "Departs right from General Luna pier. The distances are very short, meaning zero chance of restless toddler boredom. You hop from a pure white sandbar (Naked Island) to a palm-filled lunch haven (Daku) to a fairytale round islet (Guyam).",
+          stops: ["Naked Island sandbar", "Daku Island palm beach & seafood lunch", "Guyam Island mini tidal pools"]
+        },
+        kidActivities: [
+          {
+            title: "Maasin River Gentle Boat Cruise",
+            desc: "Take a calm, slow wooden boat paddle down the tranquil Maasin River under a canopy of bent coconut palms. Zero waves, peaceful nature.",
+            icon: "compass"
+          },
+          {
+            title: "Sugba Lagoon Bamboo Rafting",
+            desc: "A massive, emerald-green hidden lagoon nestled between limestone mountains with tranquil waters for calm paddle-boating and shallow swimming.",
+            icon: "ship"
+          },
+          {
+            title: "Cloud 9 Boardwalk Walkway",
+            desc: "Stroll along the iconic long wooden boardwalk stretching over the ocean to watch surfers and sea turtles from a safe viewing tower.",
+            icon: "eye"
+          }
+        ],
+        dining: {
+          vibe: "Trendy, health-conscious, artisanal bakeries & cozy garden cafes",
+          spots: "Ceviche & Shaka Bowls (toddler-favorite vibrant fruit bowls), Kermit Siargao (renowned authentic Italian pasta and pizza), Roots, and Kanaloa bakery."
+        },
+        gallery: [
+          {
+            url: "https://images.unsplash.com/photo-1537996194471-e657df975ab4?q=80&w=900&auto=format&fit=crop",
+            caption: "Lush coconut palm forests that stretch across Siargao"
+          },
+          {
+            url: "https://images.unsplash.com/photo-1506744038136-46273834b3fb?q=80&w=900&auto=format&fit=crop",
+            caption: "Guyam & Daku Island turquoise shallows - short 20 min boat hop"
+          },
+          {
+            url: "https://images.unsplash.com/photo-1518509562904-e7ef99cdcc86?q=80&w=900&auto=format&fit=crop",
+            caption: "Quiet emerald lagoons sheltered from open-ocean currents"
+          },
+          {
+            url: "https://images.unsplash.com/photo-1544735716-392fe2489ffa?q=80&w=900&auto=format&fit=crop",
+            caption: "Gentle island vibe with family-friendly outdoor cafes"
+          }
+        ],
+        itinerary: [
+          { day: "Days 1-2", plan: "Direct flight to Sayak Airport. Scenic 45-min van ride to General Luna resort. Settle into resort with pool and tropical garden." },
+          { day: "Day 3", plan: "Private morning Tri-Island hop (Naked, Daku, Guyam). Fresh coconut lunch on Daku, shallow tidal pool exploring on Guyam. Back by 1:30 PM." },
+          { day: "Day 4", plan: "Morning stroll down the Cloud 9 boardwalk; relaxed brunch at Shaka bowl cafe; afternoon dip in resort pool." },
+          { day: "Day 5", plan: "Gentle Maasin River wooden boat float and photo stop at the Sea of Palms viewpoint." },
+          { day: "Days 6-7", plan: "Day trip to Sugba Lagoon (bamboo raft cruise in protected water) followed by wood-fired pizza dinner at Kermit." },
+          { day: "Day 8-9", plan: "Souvenir shopping in General Luna, easy morning swim, and direct flight departure from Sayak." }
+        ]
+      },
+
+      camiguin: {
+        id: "camiguin",
+        name: "Camiguin Island",
+        tagline: "The Peaceful Volcanic Pearl: 10-Minute Sandbars & Zero Tourist Crowds",
+        badge: "Best for Nature, Serenity & Shortest Boat Hops",
+        badgeColor: "bg-sky-100 text-sky-800 border-sky-300",
+        heroImage: "https://images.unsplash.com/photo-1469854523086-cc02fe5d8800?q=80&w=1200&auto=format&fit=crop",
+        airport: "Camiguin Airport, Mambajao (CGM)",
+        transferTime: "10 to 20 minutes across quiet roads with virtually zero traffic",
+        boatTripDuration: "10 to 15 minutes (White Island sandbar is right off the coast!)",
+        gettingAround: "Tricycles, multicab vans, or rent an easy private car. The circumferential coastal road is peaceful and flat.",
+        beaches: [
+          {
+            name: "White Island Sandbar",
+            desc: "A pristine horseshoe-shaped sandbar floating right off the coast of Mambajao with Mount Hibok-Hibok as a dramatic backdrop. Accessible in just 10 minutes by boat.",
+            highlight: "10-minute boat ride"
+          },
+          {
+            name: "Mantigue Island Nature Park",
+            desc: "A small protected 4-hectare coral island reachable in 15 minutes. Offers shaded forest nature trails and a calm, crystal-clear shallow lagoon full of tropical reef fish.",
+            highlight: "Giant clams & calm lagoon"
+          }
+        ],
+        islandHopping: {
+          title: "White Island & Mantigue Island Marine Sanctuary",
+          duration: "10-15 minutes per way - shortest in the country!",
+          desc: "If your brother worries about seasickness or keeping a 5-year-old calm on water, Camiguin has the shortest boat transit of all. The boat ride to White Island is barely 10 minutes across protected inshore waters.",
+          stops: ["White Island powdery crescent sandbar", "Mantigue Island forest walk & clam nursery", "Sunken Cemetery marine cross"]
+        },
+        kidActivities: [
+          {
+            title: "Ardent Hot Springs & Soda Cold Springs",
+            desc: "Natural warm mineral pools surrounded by ferns and stone tiers. The water is bath-like and relaxing for children without intense waves.",
+            icon: "sparkles"
+          },
+          {
+            title: "Giant Clam Sanctuary (Kibila)",
+            desc: "A dedicated nursery where kids can view colorful giant clams in calm breeding tanks and safe shallow wading pens.",
+            icon: "shell"
+          },
+          {
+            title: "Katibawasan Falls Easy Viewing",
+            desc: "A dramatic 250-foot waterfall with an easy paved 2-minute flat walk from the parking lot, completely hassle-free with a stroller or 5yo.",
+            icon: "droplets"
+          }
+        ],
+        dining: {
+          vibe: "Quaint, uncrowded seaside restaurants and delicious Italian trattorias",
+          spots: "Luna Ristorante (authentic Italian run by an Italian expat; fantastic pizza and gelato), Guerrera Restaurant (pan-Asian food set among rice fields), and checkpoints for Camiguin's famous sweet Pastel buns."
+        },
+        gallery: [
+          {
+            url: "https://images.unsplash.com/photo-1469854523086-cc02fe5d8800?q=80&w=900&auto=format&fit=crop",
+            caption: "Camiguin island interior - tranquil roads and lush peaks"
+          },
+          {
+            url: "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?q=80&w=900&auto=format&fit=crop",
+            caption: "White Island sandbar - just 10 minutes boat ride from the shore"
+          },
+          {
+            url: "https://images.unsplash.com/photo-1518509562904-e7ef99cdcc86?q=80&w=900&auto=format&fit=crop",
+            caption: "Mantigue Island turquoise shallow coral sanctuary"
+          },
+          {
+            url: "https://images.unsplash.com/photo-1589556264800-08ae9e129a8c?q=80&w=900&auto=format&fit=crop",
+            caption: "Warm natural mineral springs surrounded by tropical foliage"
+          }
+        ],
+        itinerary: [
+          { day: "Days 1-2", plan: "Direct flight to Camiguin Airport (CGM). 12-minute van ride to beachfront resort in Mambajao. Unpack and enjoy calm ocean sunset." },
+          { day: "Day 3", plan: "Early morning 10-minute boat ride to White Island sandbar before the sun gets hot. Sandcastles in knee-deep water. Return by 10:30 AM for lunch." },
+          { day: "Day 4", plan: "Visit Katibawasan Falls (easy flat paved walk) followed by a gentle warm soak at Ardent Hot Springs." },
+          { day: "Day 5", plan: "Short 15-minute boat crossing to Mantigue Island. Walk the shaded mini forest trail and view colorful reef fish in the lagoon." },
+          { day: "Days 6-7", plan: "Visit the Giant Clam sanctuary and enjoy fresh Italian pizza at Luna Ristorante; relaxed resort beach and pool days." },
+          { day: "Days 8-9", plan: "Pick up sweet Camiguin Pastel pastries, easy 15-min transfer back to Camiguin Airport for flight home." }
+        ]
+      }
+    };
+
+    function renderIsland(islandKey) {
+      const data = islandData[islandKey];
+      if (!data) return;
+
+      const container = document.getElementById('islandContent');
+      container.innerHTML = `
+        <div class="bg-white rounded-3xl shadow-sm border border-slate-200 overflow-hidden">
+          
+          <!-- Island Header Banner -->
+          <div class="relative h-64 sm:h-96 w-full overflow-hidden">
+            <img 
+              src="${data.heroImage}" 
+              alt="${data.name}" 
+              class="w-full h-full object-cover"
+              onerror="this.src='https://placehold.co/1200x600/0d9488/ffffff?text=${encodeURIComponent(data.name)}'"
+            />
+            <div class="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-900/40 to-transparent"></div>
+            
+            <div class="absolute bottom-6 left-6 right-6 text-white">
+              <div class="inline-flex items-center px-3 py-1 rounded-full text-xs font-bold border ${data.badgeColor} bg-white/90 mb-3 shadow-xs">
+                ${data.badge}
+              </div>
+              <h3 class="text-2xl sm:text-4xl font-extrabold font-serif text-white tracking-tight">${data.name}</h3>
+              <p class="text-sm sm:text-base text-slate-200 font-light mt-1 max-w-2xl">${data.tagline}</p>
+            </div>
+          </div>
+
+          <!-- Quick Logistics Strip -->
+          <div class="grid grid-cols-1 sm:grid-cols-3 divide-y sm:divide-y-0 sm:divide-x divide-slate-100 bg-slate-50/75 border-b border-slate-200">
+            <div class="p-4 sm:p-5 flex items-start space-x-3">
+              <div class="w-10 h-10 rounded-xl bg-teal-100 text-teal-700 flex items-center justify-center shrink-0">
+                <i data-lucide="plane" class="w-5 h-5"></i>
+              </div>
+              <div>
+                <span class="text-xs uppercase font-bold text-slate-400 tracking-wider">Airport & Transfer</span>
+                <p class="text-sm font-semibold text-slate-900 mt-0.5">${data.airport}</p>
+                <p class="text-xs text-slate-500 mt-0.5">${data.transferTime}</p>
+              </div>
+            </div>
+
+            <div class="p-4 sm:p-5 flex items-start space-x-3">
+              <div class="w-10 h-10 rounded-xl bg-amber-100 text-amber-700 flex items-center justify-center shrink-0">
+                <i data-lucide="ship" class="w-5 h-5"></i>
+              </div>
+              <div>
+                <span class="text-xs uppercase font-bold text-slate-400 tracking-wider">Island Hopping Boat Time</span>
+                <p class="text-sm font-semibold text-slate-900 mt-0.5">${data.boatTripDuration}</p>
+                <p class="text-xs text-teal-600 font-medium mt-0.5"><i data-lucide="check" class="inline w-3 h-3"></i> Well within 1-hr limit</p>
+              </div>
+            </div>
+
+            <div class="p-4 sm:p-5 flex items-start space-x-3">
+              <div class="w-10 h-10 rounded-xl bg-sky-100 text-sky-700 flex items-center justify-center shrink-0">
+                <i data-lucide="navigation" class="w-5 h-5"></i>
+              </div>
+              <div>
+                <span class="text-xs uppercase font-bold text-slate-400 tracking-wider">Getting Around</span>
+                <p class="text-xs text-slate-600 mt-1 leading-relaxed">${data.gettingAround}</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Island Details Body -->
+          <div class="p-6 sm:p-10 space-y-10">
+
+            <!-- Beaches & Child Safety -->
+            <div>
+              <div class="flex items-center space-x-2 text-teal-700 mb-4">
+                <i data-lucide="waves" class="w-6 h-6"></i>
+                <h4 class="text-xl font-bold text-slate-900 font-serif">Beaches & Water Safety for a 5-Year-Old</h4>
+              </div>
+              <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                ${data.beaches.map(b => `
+                  <div class="p-5 rounded-2xl bg-teal-50/50 border border-teal-100">
+                    <div class="flex items-center justify-between mb-2">
+                      <h5 class="font-bold text-slate-900 text-base">${b.name}</h5>
+                      <span class="px-2.5 py-0.5 text-xs font-semibold rounded-full bg-teal-200/60 text-teal-800">${b.highlight}</span>
+                    </div>
+                    <p class="text-sm text-slate-600 leading-relaxed">${b.desc}</p>
+                  </div>
+                `).join('')}
+              </div>
+            </div>
+
+            <!-- Island Hopping Highlight -->
+            <div class="p-6 rounded-2xl bg-gradient-to-r from-amber-50 to-orange-50 border border-amber-200/80">
+              <div class="flex items-start justify-between flex-wrap gap-2 mb-3">
+                <div class="flex items-center space-x-2 text-amber-800">
+                  <i data-lucide="sailboat" class="w-6 h-6"></i>
+                  <h4 class="text-lg font-bold text-slate-900 font-serif">Island Hopping Experience (< 45 min per way)</h4>
+                </div>
+                <span class="px-3 py-1 rounded-full text-xs font-bold bg-amber-200 text-amber-900">
+                  ⏱️ ${data.islandHopping.duration}
+                </span>
+              </div>
+              <h5 class="font-bold text-slate-800 text-base mb-1">${data.islandHopping.title}</h5>
+              <p class="text-sm text-slate-700 leading-relaxed mb-4">${data.islandHopping.desc}</p>
+              
+              <div class="flex flex-wrap gap-2">
+                ${data.islandHopping.stops.map(stop => `
+                  <span class="inline-flex items-center space-x-1.5 px-3 py-1 bg-white rounded-lg text-xs font-medium text-slate-700 border border-amber-200 shadow-2xs">
+                    <i data-lucide="map-pin" class="w-3.5 h-3.5 text-amber-600"></i>
+                    <span>${stop}</span>
+                  </span>
+                `).join('')}
+              </div>
+            </div>
+
+            <!-- 5-Year-Old Activities & Dining -->
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+              <!-- Activities -->
+              <div>
+                <div class="flex items-center space-x-2 text-emerald-700 mb-4">
+                  <i data-lucide="smile" class="w-6 h-6"></i>
+                  <h4 class="text-xl font-bold text-slate-900 font-serif">Kid-Approved Activities</h4>
+                </div>
+                <div class="space-y-3">
+                  ${data.kidActivities.map(act => `
+                    <div class="p-4 rounded-xl bg-slate-50 border border-slate-200 flex items-start space-x-3.5">
+                      <div class="w-9 h-9 rounded-lg bg-emerald-100 text-emerald-800 flex items-center justify-center shrink-0 mt-0.5">
+                        <i data-lucide="sparkles" class="w-4 h-4"></i>
+                      </div>
+                      <div>
+                        <h5 class="font-bold text-slate-900 text-sm">${act.title}</h5>
+                        <p class="text-xs sm:text-sm text-slate-600 mt-1 leading-relaxed">${act.desc}</p>
+                      </div>
+                    </div>
+                  `).join('')}
+                </div>
+              </div>
+
+              <!-- Dining Scene -->
+              <div>
+                <div class="flex items-center space-x-2 text-rose-700 mb-4">
+                  <i data-lucide="utensils" class="w-6 h-6"></i>
+                  <h4 class="text-xl font-bold text-slate-900 font-serif">Dining & Food for Little Eaters</h4>
+                </div>
+                <div class="p-5 rounded-2xl bg-rose-50/40 border border-rose-100">
+                  <span class="text-xs uppercase font-bold text-rose-600 tracking-wider">Atmosphere</span>
+                  <p class="text-sm font-semibold text-slate-800 mt-1">${data.dining.vibe}</p>
+                  
+                  <span class="text-xs uppercase font-bold text-rose-600 tracking-wider block mt-4">Recommended Child-Friendly Eats</span>
+                  <p class="text-xs sm:text-sm text-slate-700 mt-1 leading-relaxed">${data.dining.spots}</p>
+                  
+                  <div class="mt-4 p-3 bg-white rounded-xl border border-rose-100 text-xs text-slate-600 flex items-center space-x-2">
+                    <i data-lucide="check-circle-2" class="w-4 h-4 text-emerald-600 shrink-0"></i>
+                    <span>Fresh fruit smoothies (mango, banana, watermelon) and wood-fired pizzas are widely available across all spots.</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Photo Gallery with Real Images -->
+            <div>
+              <div class="flex items-center justify-between mb-4">
+                <div class="flex items-center space-x-2 text-slate-800">
+                  <i data-lucide="camera" class="w-6 h-6 text-teal-600"></i>
+                  <h4 class="text-xl font-bold text-slate-900 font-serif">Photo Gallery: What it Actually Looks Like</h4>
+                </div>
+                <span class="text-xs text-slate-400">Click to view full</span>
+              </div>
+              <div class="grid grid-cols-2 sm:grid-cols-4 gap-3">
+                ${data.gallery.map((img, i) => `
+                  <div class="group relative rounded-xl overflow-hidden aspect-4/3 bg-slate-100 border border-slate-200">
+                    <img 
+                      src="${img.url}" 
+                      alt="${img.caption}" 
+                      class="w-full h-full object-cover group-hover:scale-105 transition duration-300"
+                      onerror="this.src='https://placehold.co/600x400/0d9488/ffffff?text=${encodeURIComponent(data.name + ' Photo ' + (i+1))}'"
+                    />
+                    <div class="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition p-2.5 flex items-end">
+                      <span class="text-white text-xs font-medium">${img.caption}</span>
+                    </div>
+                  </div>
+                `).join('')}
+              </div>
+            </div>
+
+            <!-- 8-9 Day Sample Itinerary -->
+            <div class="border-t border-slate-200 pt-8">
+              <div class="flex items-center space-x-2 text-indigo-700 mb-6">
+                <i data-lucide="calendar" class="w-6 h-6"></i>
+                <h4 class="text-xl font-bold text-slate-900 font-serif">Tailored 8-Day Family Flow</h4>
+              </div>
+
+              <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3">
+                ${data.itinerary.map(item => `
+                  <div class="p-4 rounded-xl bg-slate-50 border border-slate-200">
+                    <span class="inline-block px-2.5 py-0.5 rounded-full text-xs font-bold bg-indigo-100 text-indigo-800 mb-2">${item.day}</span>
+                    <p class="text-xs sm:text-sm text-slate-700 leading-relaxed">${item.plan}</p>
+                  </div>
+                `).join('')}
+              </div>
+            </div>
+
+          </div>
+
+        </div>
+      `;
+
+      // Re-trigger icon replacements
+      lucide.createIcons();
+    }
+
+    function selectIsland(id) {
+      // Update buttons
+      document.querySelectorAll('.island-tab-btn').forEach(btn => {
+        if (btn.getAttribute('data-id') === id) {
+          btn.className = "island-tab-btn px-4 py-2 rounded-xl text-sm font-semibold transition border border-teal-600 bg-teal-600 text-white shadow-sm flex items-center space-x-1.5";
+        } else {
+          btn.className = "island-tab-btn px-4 py-2 rounded-xl text-sm font-semibold transition border border-slate-200 bg-white text-slate-700 hover:border-teal-500 flex items-center space-x-1.5";
+        }
+      });
+
+      renderIsland(id);
+    }
+
+    function showMatch(islandKey) {
+      const resultBox = document.getElementById('matchResult');
+      resultBox.classList.remove('hidden');
+
+      const matches = {
+        boracay: {
+          title: "Verdict: Pick Boracay!",
+          reason: "For absolute zero transit stress once you arrive, Boracay is unmatched. You step out of your resort directly onto flour-soft sand with no cars or roads. Your 5-year-old can play right in the shallow water, and you can stroll right to 40+ kid-friendly restaurants. The short 12-minute boat crossing from Caticlan airport is smooth and effortless.",
+          actionIsland: "boracay"
+        },
+        panglao: {
+          title: "Verdict: Pick Panglao (Bohol)!",
+          reason: "This is the easiest flight-to-hotel arrival in the Philippines (direct flight landing on the island, 12 minutes to resort). It offers the perfect mix of ultra-calm shallow swimming at Dumaluan Beach and unforgettable wildlife (sea turtles, tarsiers, chocolate hills) that a 5-year-old will cherish.",
+          actionIsland: "panglao"
+        },
+        siargao: {
+          title: "Verdict: Pick Siargao!",
+          reason: "Siargao delivers a hip, tropical cafe culture with delicious bakeries, smooth river boat rides, and picturesque 20-minute island hops to Daku and Guyam islets. Pick a resort with a swimming pool in General Luna, and charter private bancas for calm morning sandbars.",
+          actionIsland: "siargao"
+        },
+        camiguin: {
+          title: "Verdict: Pick Camiguin!",
+          reason: "If your brother detests crowds and wants shortest-possible boat hops, Camiguin's White Island is only a 10-minute flat cruise from the shore. The island is safe, lush, quiet, and packed with gentle hot springs, clam sanctuaries, and friendly Italian dining.",
+          actionIsland: "camiguin"
+        }
+      };
+
+      const match = matches[islandKey];
+      resultBox.innerHTML = `
+        <div class="flex items-start space-x-3">
+          <div class="w-8 h-8 rounded-full bg-teal-400 text-slate-900 flex items-center justify-center font-bold shrink-0 mt-0.5">
+            ✓
+          </div>
+          <div>
+            <h4 class="text-lg font-bold text-white font-serif">${match.title}</h4>
+            <p class="text-xs sm:text-sm text-slate-200 mt-1 leading-relaxed">${match.reason}</p>
+            <button onclick="selectIsland('${match.actionIsland}'); scrollToSection('islands');" class="mt-3 inline-flex items-center space-x-1.5 px-3 py-1.5 rounded-lg bg-teal-500 hover:bg-teal-400 text-slate-950 font-bold text-xs transition">
+              <span>View full ${match.actionIsland.toUpperCase()} details</span>
+              <i data-lucide="arrow-right" class="w-3.5 h-3.5"></i>
+            </button>
+          </div>
+        </div>
+      `;
+      lucide.createIcons();
+    }
+
+    function scrollToSection(id) {
+      const el = document.getElementById(id);
+      if (el) {
+        el.scrollIntoView({ behavior: 'smooth' });
+      }
+    }
+
+    function openShareModal() {
+      const currentUrl = window.location.href;
+      document.getElementById('shareUrlInput').value = currentUrl;
+
+      const shareText = encodeURIComponent("Check out this 8-9 day Philippines Island Holiday Guide for our family and 5yo:");
+      const shareUrl = encodeURIComponent(currentUrl);
+
+      document.getElementById('whatsappShareBtn').href = `https://api.whatsapp.com/send?text=${shareText}%20${shareUrl}`;
+      document.getElementById('emailShareBtn').href = `mailto:?subject=${encodeURIComponent("Philippines Island Holiday Guide (5-Year-Old Friendly)")}&body=${shareText}%0A%0A${shareUrl}`;
+
+      // Use Web Share API if supported on mobile devices
+      if (navigator.share && /mobile|android|iphone/i.test(navigator.userAgent)) {
+        navigator.share({
+          title: "Philippines Family Island Guide",
+          text: "Philippines Island Holiday Guide (5-Year-Old Friendly)",
+          url: currentUrl
+        }).catch(() => {
+          document.getElementById('shareModal').classList.remove('hidden');
+        });
+      } else {
+        document.getElementById('shareModal').classList.remove('hidden');
+      }
+    }
+
+    function closeShareModal() {
+      document.getElementById('shareModal').classList.add('hidden');
+    }
+
+    function copyShareUrl() {
+      const input = document.getElementById('shareUrlInput');
+      const val = input.value || window.location.href;
+      input.select();
+      input.setSelectionRange(0, 99999);
+
+      const onSuccess = () => {
+        showToast("Link copied to clipboard!");
+        const copyBtn = document.getElementById('copyBtnText');
+        if (copyBtn) {
+          copyBtn.textContent = "Copied!";
+          setTimeout(() => { copyBtn.textContent = "Copy"; }, 2000);
+        }
+      };
+
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(val).then(onSuccess).catch(() => {
+          try {
+            document.execCommand('copy');
+            onSuccess();
+          } catch (e) {
+            showToast("Press Ctrl+C / Cmd+C to copy");
+          }
+        });
+      } else {
+        try {
+          document.execCommand('copy');
+          onSuccess();
+        } catch (err) {
+          showToast("Press Ctrl+C / Cmd+C to copy");
+        }
+      }
+    }
+
+    function showToast(msg) {
+      const toast = document.getElementById('toastNotification');
+      const text = document.getElementById('toastMessage');
+      text.textContent = msg;
+      toast.classList.remove('opacity-0', 'pointer-events-none', 'translate-y-2');
+      setTimeout(() => {
+        toast.classList.add('opacity-0', 'pointer-events-none', 'translate-y-2');
+      }, 2500);
+    }
+
+    // Initialize on load
+    window.onload = function() {
+      renderIsland('panglao');
+      lucide.createIcons();
+    };
+  </script>
+</body>
+</html>
