@@ -155,9 +155,20 @@
     <span id="toastMessage">Link copied to clipboard!</span>
   </div>
 
+  <!-- Image Lightbox Modal -->
+  <div id="imageLightbox" onclick="closeLightbox()" class="fixed inset-0 z-50 bg-slate-950/90 backdrop-blur-md flex flex-col items-center justify-center p-4 hidden">
+    <button onclick="closeLightbox()" class="absolute top-4 right-4 sm:top-6 sm:right-6 text-white/80 hover:text-white p-2.5 rounded-full bg-white/10 hover:bg-white/20 transition cursor-pointer">
+      <i data-lucide="x" class="w-6 h-6"></i>
+    </button>
+    <div class="max-w-5xl max-h-[90vh] flex flex-col items-center p-2" onclick="event.stopPropagation()">
+      <img id="lightboxImg" src="" alt="" class="max-h-[75vh] w-auto max-w-full rounded-2xl shadow-2xl object-contain border border-white/10" />
+      <p id="lightboxCaption" class="mt-4 text-white text-xs sm:text-sm font-medium text-center bg-slate-900/80 px-4 py-2 rounded-xl backdrop-blur-md border border-white/10 max-w-2xl"></p>
+    </div>
+  </div>
+
   <header class="relative bg-slate-900 py-16 sm:py-24 overflow-hidden">
     <img 
-      src="https://images.unsplash.com/photo-1518509562904-e7ef99cdcc86?q=80&w=1920&auto=format&fit=crop" 
+      src="images/hero-philippines.jpg" 
       alt="Philippine Tropical Beach" 
       class="absolute inset-0 w-full h-full object-cover object-center opacity-40 mix-blend-overlay"
       onerror="this.src='https://placehold.co/1920x800/0f766e/ffffff?text=Tropical+Islands+Philippines'"
@@ -425,7 +436,7 @@
         tagline: "The Overall Family Champion: Airport on the Island, Turtles & Tarsiers",
         badge: "Top Recommendation for Families",
         badgeColor: "bg-teal-100 text-teal-800 border-teal-300",
-        heroImage: "https://images.unsplash.com/photo-1544735716-392fe2489ffa?q=80&w=1200&auto=format&fit=crop",
+        heroImage: "images/panglao/hero.jpg",
         airport: "Bohol-Panglao International Airport (TAG)",
         transferTime: "10 to 15 minutes by air-conditioned van or taxi",
         boatTripDuration: "25 to 40 minutes (Balicasag Island & Virgin Island Sandbar)",
@@ -471,20 +482,28 @@
         },
         gallery: [
           {
-            url: "https://images.unsplash.com/photo-1544735716-392fe2489ffa?q=80&w=900&auto=format&fit=crop",
-            caption: "Chocolate Hills in mainland Bohol - 45 min comfortable drive"
+            url: "images/panglao/chocolate-hills.jpg",
+            caption: "Chocolate Hills (Bohol) - Iconic natural geological monument, comfortable 45m drive"
           },
           {
-            url: "https://images.unsplash.com/photo-1518509562904-e7ef99cdcc86?q=80&w=900&auto=format&fit=crop",
-            caption: "Crystal clear calm shallows around Panglao & Balicasag"
+            url: "images/panglao/tarsier.jpg",
+            caption: "Philippine Tarsier Sanctuary (Corella) - Protected, quiet wide-eyed primates"
           },
           {
-            url: "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?q=80&w=900&auto=format&fit=crop",
-            caption: "Dumaluan Beach white sand flats - safe wading for 5yo"
+            url: "images/panglao/balicasag-turtle.jpg",
+            caption: "Balicasag Marine Sanctuary - Sea turtles grazing in calm shallow coral waters"
           },
           {
-            url: "https://images.unsplash.com/photo-1589556264800-08ae9e129a8c?q=80&w=900&auto=format&fit=crop",
-            caption: "Balicasag Island coral reef & sea turtle sanctuary"
+            url: "images/panglao/virgin-island.jpg",
+            caption: "Virgin Island Sandbar - Warm knee-deep turquoise lagoon and white sandbar"
+          },
+          {
+            url: "images/panglao/dumaluan-beach.jpg",
+            caption: "Dumaluan Beach - Wide shallow sand flats with ultra-calm waters for toddlers"
+          },
+          {
+            url: "images/panglao/loboc-river.jpg",
+            caption: "Loboc River Cruise - Relaxing lunch cruise down an emerald river with live music"
           }
         ],
         itinerary: [
@@ -503,7 +522,7 @@
         tagline: "The Walkable Beachfront Wonderland: Flour-Soft Sand & 0-Minute Trike Commutes",
         badge: "Best for Walkability & Pure Beach Time",
         badgeColor: "bg-amber-100 text-amber-800 border-amber-300",
-        heroImage: "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?q=80&w=1200&auto=format&fit=crop",
+        heroImage: "images/boracay/hero.jpg",
         airport: "Godofredo P. Ramos / Caticlan Airport (MPH)",
         transferTime: "5-min van to jetty, 12-min smooth boat crossing, 10-min e-trike to resort",
         boatTripDuration: "10 to 25 minutes around the island (Puka Beach, Crocodile Island)",
@@ -549,20 +568,24 @@
         },
         gallery: [
           {
-            url: "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?q=80&w=900&auto=format&fit=crop",
-            caption: "White Beach Station 1 - wide, calm shallows safe for 5-year-olds"
+            url: "images/boracay/hero.jpg",
+            caption: "White Beach Station 1 - Powder-fine flour sand with crystal-clear calm shallows"
           },
           {
-            url: "https://images.unsplash.com/photo-1540555700478-4be289fbecef?q=80&w=900&auto=format&fit=crop",
-            caption: "Tropical coconut palm fringes directly along pedestrian beach pathway"
+            url: "images/boracay/willys-rock.jpg",
+            caption: "Willy's Rock (Station 1) - Iconic volcanic landmark accessible on foot at low tide"
           },
           {
-            url: "https://images.unsplash.com/photo-1512100356356-de1b84283e18?q=80&w=900&auto=format&fit=crop",
-            caption: "Paraw sailboats gliding quietly across calm turquoise waters"
+            url: "images/boracay/paraw-sunset.jpg",
+            caption: "Traditional Paraw Sailboats - Silent wind-powered sunset cruising on turquoise water"
           },
           {
-            url: "https://images.unsplash.com/photo-1533105079780-92b9be482077?q=80&w=900&auto=format&fit=crop",
-            caption: "Sunset over White Beach - warm evenings with foot-in-sand dining"
+            url: "images/boracay/puka-beach.jpg",
+            caption: "Puka Shell Beach - Peaceful, uncrowded northern shore with crushed coral sands"
+          },
+          {
+            url: "images/boracay/white-beach.jpg",
+            caption: "White Beach Promenade - 4km pedestrian-only palm-lined beachfront pathway"
           }
         ],
         itinerary: [
@@ -581,7 +604,7 @@
         tagline: "The Lush Bohemian Island: Palm Groves, Calm River Floats & Islet Hops",
         badge: "Best for Boutique Cafes & Laid-Back Scenery",
         badgeColor: "bg-emerald-100 text-emerald-800 border-emerald-300",
-        heroImage: "https://images.unsplash.com/photo-1537996194471-e657df975ab4?q=80&w=1200&auto=format&fit=crop",
+        heroImage: "images/siargao/hero.jpg",
         airport: "Sayak Airport, Del Carmen (IAO)",
         transferTime: "40 to 45 minutes across smooth, scenic paved roads lined with palm trees",
         boatTripDuration: "15 to 25 minutes (Naked, Daku, and Guyam Islands)",
@@ -627,20 +650,24 @@
         },
         gallery: [
           {
-            url: "https://images.unsplash.com/photo-1537996194471-e657df975ab4?q=80&w=900&auto=format&fit=crop",
-            caption: "Lush coconut palm forests that stretch across Siargao"
+            url: "images/siargao/hero.jpg",
+            caption: "Coconut Trees View Deck - Breathtaking panoramic sea of thousands of palm trees"
           },
           {
-            url: "https://images.unsplash.com/photo-1506744038136-46273834b3fb?q=80&w=900&auto=format&fit=crop",
-            caption: "Guyam & Daku Island turquoise shallows - short 20 min boat hop"
+            url: "images/siargao/guyam-island.jpg",
+            caption: "Guyam Island - Miniature circular paradise islet with shallow sandy lagoon"
           },
           {
-            url: "https://images.unsplash.com/photo-1518509562904-e7ef99cdcc86?q=80&w=900&auto=format&fit=crop",
-            caption: "Quiet emerald lagoons sheltered from open-ocean currents"
+            url: "images/siargao/daku-island.jpg",
+            caption: "Daku Island - Shaded coconut grove beach with warm swimmable shallows & seafood"
           },
           {
-            url: "https://images.unsplash.com/photo-1544735716-392fe2489ffa?q=80&w=900&auto=format&fit=crop",
-            caption: "Gentle island vibe with family-friendly outdoor cafes"
+            url: "images/siargao/magpupungko.jpg",
+            caption: "Magpupungko Tidal Pools - Natural emerald saltwater pool safe at low tide"
+          },
+          {
+            url: "images/siargao/cloud9-boardwalk.jpg",
+            caption: "Cloud 9 Boardwalk - Iconic scenic wooden walkway extending out over the ocean reef"
           }
         ],
         itinerary: [
@@ -659,7 +686,7 @@
         tagline: "The Peaceful Volcanic Pearl: 10-Minute Sandbars & Zero Tourist Crowds",
         badge: "Best for Nature, Serenity & Shortest Boat Hops",
         badgeColor: "bg-sky-100 text-sky-800 border-sky-300",
-        heroImage: "https://images.unsplash.com/photo-1469854523086-cc02fe5d8800?q=80&w=1200&auto=format&fit=crop",
+        heroImage: "images/camiguin/hero.jpg",
         airport: "Camiguin Airport, Mambajao (CGM)",
         transferTime: "10 to 20 minutes across quiet roads with virtually zero traffic",
         boatTripDuration: "10 to 15 minutes (White Island sandbar is right off the coast!)",
@@ -705,20 +732,24 @@
         },
         gallery: [
           {
-            url: "https://images.unsplash.com/photo-1469854523086-cc02fe5d8800?q=80&w=900&auto=format&fit=crop",
-            caption: "Camiguin island interior - tranquil roads and lush peaks"
+            url: "images/camiguin/hero.jpg",
+            caption: "White Island Sandbar - Pristine sandbar with Mt. Hibok-Hibok backdrop (10m boat)"
           },
           {
-            url: "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?q=80&w=900&auto=format&fit=crop",
-            caption: "White Island sandbar - just 10 minutes boat ride from the shore"
+            url: "images/camiguin/sunken-cemetery.jpg",
+            caption: "Sunken Cemetery - Historic giant cross marker rising peacefully from the coastal sea"
           },
           {
-            url: "https://images.unsplash.com/photo-1518509562904-e7ef99cdcc86?q=80&w=900&auto=format&fit=crop",
-            caption: "Mantigue Island turquoise shallow coral sanctuary"
+            url: "images/camiguin/mantigue-island.jpg",
+            caption: "Mantigue Island Nature Park - Protected lush coral sanctuary and shaded forest trails"
           },
           {
-            url: "https://images.unsplash.com/photo-1589556264800-08ae9e129a8c?q=80&w=900&auto=format&fit=crop",
-            caption: "Warm natural mineral springs surrounded by tropical foliage"
+            url: "images/camiguin/katibawasan-falls.jpg",
+            caption: "Katibawasan Falls - Dramatic 250-foot waterfall with an easy flat 2-minute stroll"
+          },
+          {
+            url: "images/camiguin/hibok-hibok.jpg",
+            caption: "Mount Hibok-Hibok View - Majestic volcanic skyline framing Camiguin's coast"
           }
         ],
         itinerary: [
@@ -889,21 +920,24 @@
               <div class="flex items-center justify-between mb-4">
                 <div class="flex items-center space-x-2 text-slate-800">
                   <i data-lucide="camera" class="w-6 h-6 text-teal-600"></i>
-                  <h4 class="text-xl font-bold text-slate-900 font-serif">Photo Gallery: What it Actually Looks Like</h4>
+                  <h4 class="text-xl font-bold text-slate-900 font-serif">Photo Gallery: Authentic Landmark Views</h4>
                 </div>
-                <span class="text-xs text-slate-400">Click to view full</span>
+                <span class="text-xs text-slate-400">Click any photo to enlarge</span>
               </div>
-              <div class="grid grid-cols-2 sm:grid-cols-4 gap-3">
+              <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-3">
                 ${data.gallery.map((img, i) => `
-                  <div class="group relative rounded-xl overflow-hidden aspect-4/3 bg-slate-100 border border-slate-200">
+                  <div onclick="openLightbox('${img.url}', '${img.caption.replace(/'/g, "\\'")}')" class="group relative rounded-xl overflow-hidden aspect-4/3 bg-slate-100 border border-slate-200 cursor-pointer shadow-2xs hover:shadow-md transition">
                     <img 
                       src="${img.url}" 
                       alt="${img.caption}" 
                       class="w-full h-full object-cover group-hover:scale-105 transition duration-300"
-                      onerror="this.src='https://placehold.co/600x400/0d9488/ffffff?text=${encodeURIComponent(data.name + ' Photo ' + (i+1))}'"
+                      loading="lazy"
                     />
-                    <div class="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition p-2.5 flex items-end">
-                      <span class="text-white text-xs font-medium">${img.caption}</span>
+                    <div class="absolute inset-0 bg-gradient-to-t from-slate-950/85 via-slate-900/20 to-transparent opacity-0 group-hover:opacity-100 transition p-2 flex flex-col justify-between">
+                      <div class="self-end p-1 rounded-md bg-white/20 backdrop-blur-xs text-white">
+                        <i data-lucide="maximize-2" class="w-3.5 h-3.5"></i>
+                      </div>
+                      <span class="text-white text-[11px] font-medium leading-snug drop-shadow-sm">${img.caption}</span>
                     </div>
                   </div>
                 `).join('')}
@@ -1073,6 +1107,29 @@
         toast.classList.add('opacity-0', 'pointer-events-none', 'translate-y-2');
       }, 2500);
     }
+
+    function openLightbox(url, caption) {
+      const modal = document.getElementById('imageLightbox');
+      const img = document.getElementById('lightboxImg');
+      const cap = document.getElementById('lightboxCaption');
+      img.src = url;
+      img.alt = caption;
+      cap.textContent = caption;
+      modal.classList.remove('hidden');
+      lucide.createIcons();
+    }
+
+    function closeLightbox() {
+      const modal = document.getElementById('imageLightbox');
+      modal.classList.add('hidden');
+    }
+
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') {
+        closeLightbox();
+        closeShareModal();
+      }
+    });
 
     // Initialize on load
     window.onload = function() {
