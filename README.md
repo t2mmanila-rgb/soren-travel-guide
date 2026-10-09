@@ -17,20 +17,20 @@ Travelling with a 5-year-old requires a completely different logistical standard
 
 ---
 
-## 🏝️ The 4 Contender Islands
+## 🏝️ The 4 Contender Islands & Authentic Photo Highlights
 
 1. **Panglao Island (Bohol)** — *Top Recommendation*
    - Direct jet flights to Bohol-Panglao International Airport (TAG).
-   - Tarsier sanctuary, gentle paddle-board / river cruise, dolphin watching, white sandy shallows at Alona & Dumaluan Beach.
+   - **Authentic Photos:** Bohol Chocolate Hills, Philippine Tarsier Sanctuary (Corella), Balicasag Island sea turtle sanctuary, Virgin Island sandbar lagoon, Dumaluan Beach shallows, and Loboc River lunch cruise.
 2. **Boracay Island (Station 1 / Bulabog)** — *Ultimate Convenience & Powder Sand*
    - Quick flight to Caticlan (MPH) + 15-minute modern speed boat.
-   - Ultra-shallow, calm waters extending 50+ meters out; wide variety of kid-friendly dining and beachfront strollers.
+   - **Authentic Photos:** White Beach Station 1 turquoise shallows, iconic Willy's Rock, traditional Paraw sunset sailboats, and Puka Shell Beach.
 3. **Siargao Island (General Luna & Malinao)** — *Laid-back Vibe & Tidal Pools*
    - Direct flights into Sayak Airport (IAO).
-   - Calmer tidal pools (Magpupungko), flat lagoons, family surf lessons in gentle foam, coconut trails.
+   - **Authentic Photos:** Coconut Trees View Deck (Sea of Palms), Guyam Island circular islet, Daku Island coconut grove beach, Magpupungko tidal rock pools, and Cloud 9 wooden boardwalk.
 4. **Camiguin Island** — *Volcanic Nature & Off-the-Beaten-Path*
    - Direct flights into Camiguin Airport (CGM) or short ferry from Balingoan.
-   - White Island sandbar (10-minute outrigger), natural warm & cold soda springs, quiet farm-to-table resorts.
+   - **Authentic Photos:** White Island powdery sandbar framed by Mt. Hibok-Hibok, historic Sunken Cemetery sea cross, Mantigue Island coral nature park, and Katibawasan Falls.
 
 ---
 
@@ -38,7 +38,8 @@ Travelling with a 5-year-old requires a completely different logistical standard
 
 - **Side-by-Side Comparison Matrix:** Compare airport proximity, boat ride duration, wave intensity, medical access, and budget.
 - **Island Finder Matchmaker Quiz:** Answer 3 quick family preference questions to get an instant tailored recommendation.
-- **Detailed Island Breakdowns:** Day-by-day suggested itineraries, vetted family-friendly hotels, must-try kid activities, and dining spots.
+- **Authentic Photo Galleries with Full-Screen Lightbox:** Click any high-resolution photo to view full-size landmark views with captions (ESC or backdrop tap to close).
+- **Detailed Island Breakdowns:** Day-by-day suggested itineraries, kid-approved activities, and dining spots.
 - **Share & Export Bar:** Native Web Share, direct WhatsApp sharing link, email link, and one-click PDF print for Søren and his family.
 
 ---
@@ -46,4 +47,5 @@ Travelling with a 5-year-old requires a completely different logistical standard
 ## 🚀 Deployment & Tech Stack
 
 - **Stack:** HTML5, Tailwind CSS, Lucide Icons, Vanilla JavaScript.
-- **Hosting:** GitHub Pages (single-file architecture).
+- **Assets:** Locally hosted authentic photography under `images/`.
+- **Hosting:** GitHub Pages.
